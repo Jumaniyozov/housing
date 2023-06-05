@@ -1,20 +1,16 @@
 "use client";
 
 
-import {YMaps, Map, Placemark, TypeSelector} from "@pbe/react-yandex-maps";
-import {IMapState, MapEvent} from "yandex-maps";
-import { useEffect, useState } from "react";
-import {
-    generatePlaceMarks,
-    placeMarkData,
-} from "@/lib/generatePlacemarks";
+import {Map, Placemark, TypeSelector, YMaps} from "@pbe/react-yandex-maps";
+import {IMapState, IOptionManager, MapEvent} from "yandex-maps";
+import {useState} from "react";
+import {generatePlaceMarks, placeMarkData,} from "@/lib/generatePlacemarks";
 
 const defaultState: IMapState = {
     center: [41.319592, 69.254302],
     zoom: 12,
     type: "yandex#satellite"
 };
-
 
 export const GeneralMap = () => {
 
@@ -58,7 +54,7 @@ export const GeneralMap = () => {
                 modules={["geolocation", "geocode"]}
                 onClick={addPlaceMark}
             >
-                <TypeSelector options={{ float: "right" }} />
+                <TypeSelector />
                 {/*<Polygon*/}
                 {/*  geometry={[*/}
                 {/*    [*/}
