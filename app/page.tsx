@@ -1,113 +1,143 @@
 import Image from 'next/image'
+import {SearchIcon} from "lucide-react";
+import {Input} from "@/components/ui/input";
+import {Button} from "@/components/ui/button";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
+import {Toggle} from "@/components/ui/toggle";
+import {filterData} from "@/settings/filterData";
+import {GeneralMap} from "@/components/map/GeneralMap";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <main className="flex min-h-screen flex-col pt-6">
+            <div className="px-36 w-full">
+                <div className="h-36 border border-neutral-200 w-full rounded-lg relative overflow-hidden">
+                    <Image className="object-cover" fill src="/burger-king.jpg" alt="burger king"/>
+                </div>
+                {/*<div className="h-24 border border-neutral-200 w-full rounded-lg mt-6 px-12 flex items-center">*/}
+                {/*    <div className="flex gap-4 items-center w-full">*/}
+                {/*        <div className="w-6/12">*/}
+                {/*            <div className="relative mt-2 rounded-md shadow-sm">*/}
+                {/*                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">*/}
+                {/*                    <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true"/>*/}
+                {/*                </div>*/}
+                {/*                <Input*/}
+                {/*                    type="email"*/}
+                {/*                    name="email"*/}
+                {/*                    id="email"*/}
+                {/*                    className="py-1.5 pl-10 focus-visible:ring-cyan-500"*/}
+                {/*                    placeholder="Qidirish"*/}
+                {/*                />*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*        <div className="w-6/12 flex justify-end items-center">*/}
+                {/*            <div className="relative mt-2 rounded-md shadow-sm flex gap-4 ">*/}
+                {/*                /!*<Button className="bg-cyan-500 hover:bg-cyan-700">*!/*/}
+                {/*                /!*    Ro`yxatdan o`tish*!/*/}
+                {/*                /!*</Button>*!/*/}
+                {/*                <Button className="bg-cyan-500 hover:bg-cyan-700 p-6 text-lg">*/}
+                {/*                    Login*/}
+                {/*                </Button>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                <div className="h-24 border border-neutral-200 w-full rounded-lg mt-6 pl-12 flex items-center gap-3">
+                    <div className="flex items-center w-3/12 h-full">
+                        <Input placeholder="Manzil yoki ZIP code" id="search_house" type="text"
+                               className="w-full h-full border-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"/>
+                    </div>
+                    <div className="flex items-center w-3/12 h-full">
+                        <Select>
+                            <SelectTrigger className="w-full min-w-[180px] focus:ring-cyan-500">
+                                <SelectValue placeholder="Hududni tanlang"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Hudud</SelectLabel>
+                                    <SelectItem value="Toshkent">Toshkent</SelectItem>
+                                    <SelectItem value="Toshkent Viloyati">Toshkent Viloyati</SelectItem>
+                                    {/*<SelectItem value="Andijon">Andijon</SelectItem>*/}
+                                    {/*<SelectItem value="Buxoro">Buxoro</SelectItem>*/}
+                                    {/*<SelectItem value="Fargʻona">Fargʻona</SelectItem>*/}
+                                    {/*<SelectItem value="Jizzax">Jizzax</SelectItem>*/}
+                                    {/*<SelectItem value="Xorazm">Xorazm</SelectItem>*/}
+                                    {/*<SelectItem value="Namangan">Namangan</SelectItem>*/}
+                                    {/*<SelectItem value="Navoiy">Navoiy</SelectItem>*/}
+                                    {/*<SelectItem value="Qashqadaryo">Qashqadaryo</SelectItem>*/}
+                                    {/*<SelectItem value="Qoraqalpogʻiston">Qoraqalpogʻiston Respublikasi</SelectItem>*/}
+                                    {/*<SelectItem value="Samarqand">Samarqand</SelectItem>*/}
+                                    {/*<SelectItem value="Sirdaryo">Sirdaryo</SelectItem>*/}
+                                    {/*<SelectItem value="Surxondaryo">Surxondaryo</SelectItem>*/}
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="flex items-center w-3/12 h-full">
+                        <Select>
+                            <SelectTrigger className="w-full min-w-[180px] focus:ring-cyan-500">
+                                <SelectValue placeholder="Tumanni tanlang"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Tuman</SelectLabel>
+                                    <SelectItem value="Bektemir">Bektemir</SelectItem>
+                                    <SelectItem value="Chilonzor">Chilonzor</SelectItem>
+                                    <SelectItem value="Mirobod">Mirobod</SelectItem>
+                                    <SelectItem value="Mirzo Ulug`bek">Mirzo Ulug`bek</SelectItem>
+                                    <SelectItem value="Olmazor">Olmazor</SelectItem>
+                                    <SelectItem value="Sergeli">Sergeli</SelectItem>
+                                    <SelectItem value="Shayhontohur">Shayhontohur</SelectItem>
+                                    <SelectItem value="Uchtepa">Uchtepa</SelectItem>
+                                    <SelectItem value="Yakkasaroy">Yakkasaroy</SelectItem>
+                                    <SelectItem value="Yashnaobod">Yashnaobod</SelectItem>
+                                    <SelectItem value="Yunusobod">Yunusobod</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="flex items-center w-4/12 h-full  py-2">
+                        {/*<div>*/}
+                        {/*    <p>Summa (So`m)</p>*/}
+                        {/*</div>*/}
+                        <div className="flex gap-4">
+                            <Input placeholder="Narxi ...dan" id="search_house" type="number"
+                                   className="w-full h-full focus-visible:ring-cyan-500"/>
+                            <Input placeholder="Narxi ...gacha" id="search_house" type="number"
+                                   className="w-full h-full focus-visible:ring-cyan-500"/>
+                        </div>
+                    </div>
+                    <div className="flex items-start w-2/12 h-full flex-col justify-end">
+                        <div className="w-full h-full flex justify-end">
+                            <Button
+                                className="rounded-l-none bg-cyan-500 hover:bg-cyan-700 h-full w-1/2"><SearchIcon/></Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="h-24 mt-2 px-12 flex items-center gap-3">
+                    <div className="flex items-center gap-4 w-full h-full">
+                        {filterData.map((el) => (
+                            <Toggle
+                                key={el.id}
+                                className="data-[state=on]:bg-cyan-500 data-[state=on]:text-white bg-neutral-200/90 hover:bg-cyan-300 h-12 p-3"
+                                size="lg" aria-label={`Toggle filter ${el.id}`}>
+                                <p>{el.id}</p>
+                            </Toggle>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="w-full h-[640px]">
+                <GeneralMap/>
+            </div>
+        </main>
+    )
 }
