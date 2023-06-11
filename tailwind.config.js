@@ -26,6 +26,9 @@ module.exports = {
                     800: "#2c8285",
                     900: "#266f72",
                 },
+                brandDark: {
+                    900: "#06080F"
+                },
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
