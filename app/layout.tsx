@@ -1,21 +1,28 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import {Antonio, PT_Sans_Narrow} from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const antonio = Antonio({subsets: ['latin'], variable: '--font-antonio'})
+const sansNarrow = PT_Sans_Narrow({
+    weight: ['400', '700'],
+    subsets: ['latin'],
+    // display: 'swap',
+    variable: '--font-sans-narrow'
+})
 
 export const metadata = {
-  title: 'Housing',
-  description: 'Search for houses',
+    title: 'Housing',
+    description: 'Search for houses',
 }
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
+                                       children,
+                                   }: {
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`${inter.className}`}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en" className={`${antonio.variable} ${sansNarrow.variable}`}>
+        {/*<body className={`${antonio.className} bg-cyan-50/40`}>{children}</body>*/}
+            <body>{children}</body>
+        </html>
+    )
 }

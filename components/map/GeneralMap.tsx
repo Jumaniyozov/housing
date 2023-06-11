@@ -1,7 +1,6 @@
 "use client";
 
-
-import {Map, Placemark, TypeSelector, YMaps} from "@pbe/react-yandex-maps";
+import {Clusterer, Map, Placemark, TypeSelector, YMaps} from "@pbe/react-yandex-maps";
 import {IMapState, IOptionManager, MapEvent} from "yandex-maps";
 import {useState} from "react";
 import {generatePlaceMarks, placeMarkData,} from "@/lib/generatePlacemarks";
@@ -9,7 +8,7 @@ import {generatePlaceMarks, placeMarkData,} from "@/lib/generatePlacemarks";
 const defaultState: IMapState = {
     center: [41.319592, 69.254302],
     zoom: 12,
-    type: "yandex#satellite"
+    type: "yandex#hybrid"
 };
 
 export const GeneralMap = () => {
@@ -18,33 +17,9 @@ export const GeneralMap = () => {
         return generatePlaceMarks(50);
     });
 
-    // const filteredPlacemarks = placemarks.filter((item) =>
-    //     // filteredMarks.includes(item.category)
-    // );
-
     const addPlaceMark = (e: MapEvent) => {
-        // setObjectEnterOpen(true);
-        //
-        // setCurrentLocation(e.get("coords"));
-    };
 
-    // useEffect(() => {
-    //     if (isConfirmed && currentLocation[0] !== "" && currentLocation[1] !== "") {
-    //         const categoryIdx = Math.floor(Math.random() * placeMarkCategory.length);
-    //
-    //         setPlacemarks((prev) => {
-    //             const addingOne = {
-    //                 id: prev.length,
-    //                 data: currentLocation,
-    //                 category: placeMarkCategory[categoryIdx],
-    //                 iconUrl: placeMarkIcons[categoryIdx],
-    //             };
-    //             return [...prev, addingOne];
-    //         });
-    //
-    //         setIsConfirmed(false);
-    //     }
-    // }, [isConfirmed, currentLocation]);
+    };
 
     return (
         <YMaps>
@@ -55,44 +30,46 @@ export const GeneralMap = () => {
                 onClick={addPlaceMark}
             >
                 <TypeSelector />
-                {/*<Polygon*/}
-                {/*  geometry={[*/}
-                {/*    [*/}
-                {/*      [41.397, 69.2345],*/}
-                {/*      [41.3567, 69.1672],*/}
-                {/*      [41.3075, 69.1521],*/}
-                {/*      [41.3168, 69.1926],*/}
-                {/*      [41.3562, 69.2709],*/}
-                {/*      [41.397, 69.2345],*/}
-                {/*    ],*/}
-                {/*  ]}*/}
-                {/*  options={{*/}
-                {/*    // pane: "IdentificationIcon",*/}
-                {/*    fillColor: "#00FF00",*/}
-                {/*    strokeColor: "#0000FF",*/}
-                {/*    opacity: 0.5,*/}
-                {/*    strokeWidth: 5,*/}
-                {/*    strokeStyle: "shortdash",*/}
-                {/*    hasBalloon: true,*/}
-                {/*  }}*/}
-                {/*/>*/}
-                {placemarks.map((el) => (
-                    <Placemark
-                        key={el.id}
-                        geometry={el.data}
-                        modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-                        options={{
-                            iconLayout: "default#image",
-                            iconImageSize: [50, 50],
-                            iconImageHref: "/icons/pin.png",
-                        }}
-                        // properties={{
-                        //   balloonContentBody: "body",
-                        //   iconCaption: "caption",
-                        //   hintContent: "content",
-                        // }}
-                    />
-                ))}
+                <Clusterer
+                    options={{
+                        preset: "islands#invertedLightBlueClusterIcons",
+                        groupByCoordinates: false,
+                    }}
+                >
+                    {placemarks.map((el) => (
+                        <Placemark
+                            key={el.id}
+                            geometry={el.data}
+                            modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+                            options={{
+                                iconLayout: "default#image",
+                                iconImageSize: [52, 58],
+                                iconImageHref: "/icons/pin.png",
+                            }}
+                            properties={{
+                                // hintContent: '<b> Я появляюсь при наведении на метку </b>',
+                                balloonContent: `<div id="${el.id}" class="flex flex-col w-64 h-48 p-4 rounded-lg overflow-hidden">
+                                  <div class="flex gap-4">
+                                    <div class="w-24 h-24">
+                                        <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">
+                                    </div>
+                                    <div class="w-1/2" class="flex flex-col gap-2">
+                                      <h3 class="uppercase text-base font-bold tracking-tight">Apartment near the beach</h3>
+                                      <p class="text-sm font-bold text-cyan-500">60 000 000 so'm</p>
+                                    </div>
+                                  </div>
+                                  <div class="border-t mt-4">
+                                  <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                   Tashkent, Shayxontoxur tumani, Tinchlik 1-1
+                                   </p>
+                                  </div>
+                                </div>`,
+                            }}
+                            onClick={() => {}}
+                        />
+                    ))}
+                </Clusterer>
+
             </Map>
         </YMaps>
     );
