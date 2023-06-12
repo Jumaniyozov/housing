@@ -42,7 +42,7 @@ const Page = () => {
                 <div className="mt-8 border-t border-neutral-400">
                     <div className="mt-8 flex flex-col gap-10">
                         <div className="flex gap-3 items-end">
-                            <h3 className="text-2xl uppercase">Ma'lumotnoma</h3>
+                            <h3 className="text-2xl uppercase">Ma`lumotnoma</h3>
                         </div>
                         <div className="gap-3 text-md grid grid-cols-3">
                             <p className="text-gray-900/60 font-sansNarrow">Property ID: 4142123</p>
