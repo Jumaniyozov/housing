@@ -1,8 +1,9 @@
 "use client";
 
 import {Clusterer, Map, Placemark, TypeSelector, YMaps} from "@pbe/react-yandex-maps";
-import {IMapState, IOptionManager, MapEvent} from "yandex-maps";
+import {IMapState, MapEvent} from "yandex-maps";
 import {useState} from "react";
+import {useRouter} from "next/navigation";
 import {generatePlaceMarks, placeMarkData,} from "@/lib/generatePlacemarks";
 
 const defaultState: IMapState = {
@@ -12,7 +13,7 @@ const defaultState: IMapState = {
 };
 
 export const GeneralMap = () => {
-
+    const router = useRouter();
     const [placemarks, setPlacemarks] = useState<placeMarkData[]>(() => {
         return generatePlaceMarks(50);
     });
@@ -29,7 +30,7 @@ export const GeneralMap = () => {
                 modules={["geolocation", "geocode"]}
                 onClick={addPlaceMark}
             >
-                <TypeSelector />
+                <TypeSelector/>
                 <Clusterer
                     options={{
                         preset: "islands#invertedLightBlueClusterIcons",
@@ -49,6 +50,7 @@ export const GeneralMap = () => {
                             properties={{
                                 // hintContent: '<b> Я появляюсь при наведении на метку </b>',
                                 balloonContent: `<div id="${el.id}" class="flex flex-col w-64 h-48 p-4 rounded-lg overflow-hidden">
+                                   <a href="/house/1" target="_blank">
                                   <div class="flex gap-4">
                                     <div class="w-24 h-24">
                                         <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">
@@ -63,6 +65,7 @@ export const GeneralMap = () => {
                                    Tashkent, Shayxontoxur tumani, Tinchlik 1-1
                                    </p>
                                   </div>
+                                    </a>
                                 </div>`,
                             }}
                             onClick={() => {}}
