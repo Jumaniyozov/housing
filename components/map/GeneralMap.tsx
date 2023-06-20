@@ -56,22 +56,19 @@ export const GeneralMap = () => {
     <!--                                        <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">-->
     <!--                                    </div>-->
                                         <div class="w-full" class="flex flex-col gap-2">
-                                          <h3 class="uppercase text-sm font-bold tracking-tight">Golden House LTD</h3>
+<!--                                          <h3 class="uppercase text-sm font-bold tracking-tight">Golden House LTD</h3>-->
                                           <p class="text-sm font-bold text-cyan-500">60 000 000 so'm</p>
                                         </div>
                                       </div>
                                       <div class="flex flex-col gap-2 border-t mt-4">
-                                          <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
-                                             <span class="italic">Adress:</span> Tashkent, Shayxontoxur tumani, Tinchlik 1-1
-                                           </p>
+<!--                                          <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              -->
+<!--                                             <span class="italic">Adress:</span> Tashkent, Shayxontoxur tumani, Tinchlik 1-1-->
+<!--                                           </p>-->
                                             <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
-                                            <span class="italic">Nomer:</span> +998 (90) 123-45-67
+                                            <span class="italic">Nomer:</span> +998 (90) 123-45-67 <a class="text-neutral-600 text-sm font-semibold tracking-tight underline" href="https://t.me/+998901234567" target="_blank">t.me</a>
                                             </p>
                                       </div>
                                     </a>
-                                    <div class="mt-4">
-                                        <a class="text-neutral-600 text-sm font-semibold tracking-tight" href="https://t.me/goproglib" target="_blank">Telegram</a>
-                                    </div>
                                 </div>
                                 </div>`,
                             }}
