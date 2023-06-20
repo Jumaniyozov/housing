@@ -49,7 +49,7 @@ export const GeneralMap = () => {
                             }}
                             properties={{
                                 // hintContent: '<b> Я появляюсь при наведении на метку </b>',
-                                balloonContent: `<div id="${el.id}" class="flex flex-col w-64 h-48 p-4 rounded-lg overflow-hidden">
+                                balloonContent: `<div id="${el.id}" class="flex flex-col w-40 h-36 p-1 rounded-lg overflow-hidden">
                                    <a href="/house/1" target="_blank">
                                       <div class="flex gap-4">
                                         <div class="w-full" class="flex flex-col gap-2">
@@ -58,7 +58,7 @@ export const GeneralMap = () => {
                                           </p>
                                         </div>
                                       </div>
-                                      <div class="flex flex-col gap-2 border-t mt-4 py-2">
+                                      <div class="flex flex-col gap-2 border-t mt-2 py-2">
                                            <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
                                                 Umumiy maydon: 400kv metr
                                           </p>
