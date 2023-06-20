@@ -23,7 +23,7 @@ const Filters = () => {
                 {/*    <Input placeholder="Manzil yoki ZIP code" id="search_house" type="text"*/}
                 {/*           className="font-sansNarrow w-full h-full border-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"/>*/}
                 {/*</div>*/}
-                <div className="flex items-center w-4/12 h-full">
+                <div className="flex items-center w-3/12 h-full">
                     <Select>
                         <SelectTrigger className="w-full min-w-[180px] focus:ring-cyan-500">
                             <SelectValue placeholder="Hududni tanlang"/>
@@ -49,7 +49,7 @@ const Filters = () => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className="flex items-center w-4/12 h-full">
+                <div className="flex items-center w-3/12 h-full">
                     <Select>
                         <SelectTrigger className="w-full min-w-[180px] focus:ring-cyan-500">
                             <SelectValue placeholder="Tumanni tanlang"/>
@@ -72,7 +72,7 @@ const Filters = () => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className="flex items-center w-4/12 h-full  py-2">
+                <div className="flex items-center w-3/12 h-full  py-2">
                     {/*<div>*/}
                     {/*    <p>Summa (So`m)</p>*/}
                     {/*</div>*/}
@@ -83,13 +83,21 @@ const Filters = () => {
                                className="focus-visible:ring-brand-500"/>
                     </div>
                 </div>
+                <div className="flex items-center w-2/12 h-full  py-2">
+                    <div className="flex gap-4">
+                        <Toggle placeholder="Narxi ...dan" id="search_house"
+                                className="data-[state=on]:bg-brand-500 data-[state=on]:text-white bg-neutral-200/90 hover:bg-brand-300 hover:text-white h-10 p-4 px-8">y.e.</Toggle>
+                        <Toggle placeholder="Narxi ...gacha" id="search_house"
+                                className="data-[state=on]:bg-brand-500 data-[state=on]:text-white bg-neutral-200/90 hover:bg-brand-300 hover:text-white h-10 p-4 px-8">so`m</Toggle>
+                    </div>
+                </div>
                 <div className="flex w-1/12 h-full">
                         <Button
                             className="rounded-l-none bg-brand-500 hover:bg-brand-700 h-full w-full"><SearchIcon/></Button>
                 </div>
             </div>
             <div className="h-24 mt-2 px-12 flex items-center gap-3 w-full">
-                <div className="grid grid-cols-6 gap-4 w-full h-full">
+                <div className="grid grid-cols-8 gap-4 w-full h-full">
                     {filterData.map((el) => (
                         <Toggle
                             key={el.id}

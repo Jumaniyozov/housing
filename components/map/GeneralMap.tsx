@@ -51,21 +51,28 @@ export const GeneralMap = () => {
                                 // hintContent: '<b> Я появляюсь при наведении на метку </b>',
                                 balloonContent: `<div id="${el.id}" class="flex flex-col w-64 h-48 p-4 rounded-lg overflow-hidden">
                                    <a href="/house/1" target="_blank">
-                                  <div class="flex gap-4">
-                                    <div class="w-24 h-24">
-                                        <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">
-                                    </div>
-                                    <div class="w-1/2" class="flex flex-col gap-2">
-                                      <h3 class="uppercase text-base font-bold tracking-tight">Apartment near the beach</h3>
-                                      <p class="text-sm font-bold text-cyan-500">60 000 000 so'm</p>
-                                    </div>
-                                  </div>
-                                  <div class="border-t mt-4">
-                                  <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
-                                   Tashkent, Shayxontoxur tumani, Tinchlik 1-1
-                                   </p>
-                                  </div>
+                                      <div class="flex gap-4">
+    <!--                                    <div class="w-24 h-24">-->
+    <!--                                        <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">-->
+    <!--                                    </div>-->
+                                        <div class="w-full" class="flex flex-col gap-2">
+                                          <h3 class="uppercase text-sm font-bold tracking-tight">Golden House LTD</h3>
+                                          <p class="text-sm font-bold text-cyan-500">60 000 000 so'm</p>
+                                        </div>
+                                      </div>
+                                      <div class="flex flex-col gap-2 border-t mt-4">
+                                          <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                             <span class="italic">Adress:</span> Tashkent, Shayxontoxur tumani, Tinchlik 1-1
+                                           </p>
+                                            <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                            <span class="italic">Nomer:</span> +998 (90) 123-45-67
+                                            </p>
+                                      </div>
                                     </a>
+                                    <div class="mt-4">
+                                        <a class="text-neutral-600 text-sm font-semibold tracking-tight" href="https://t.me/goproglib" target="_blank">Telegram</a>
+                                    </div>
+                                </div>
                                 </div>`,
                             }}
                             onClick={() => {}}

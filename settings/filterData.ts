@@ -3,8 +3,6 @@ export const filterData = [
         id: "Barchasi",
     },
     {
-        id: "Davlat auksionlari",
-    },{
         id: "Sotiladigan uy",
     },{
         id: "Sotiladigan kvartira",
@@ -13,16 +11,30 @@ export const filterData = [
     },{
         id: "Sotiladigan noturar joy",
     },{
-        id: "Dala hovli ijarasi",
+        id: "Sotiladigan dala hovli",
     },{
-        id: "Ofis ijarasi",
+        id: "Sotiladigan tijoriy bino",
+    },{
+        id: "Sotiladigan yer",
+    },{
+        id: "Davlat auksionlari",
     },{
         id: "Uy ijarasi",
     },{
         id: "Kvartira ijarasi",
-    },{
+    },
+    {
         id: "Yangi uy ijarasi",
-    },{
+    },
+    {
         id: "Noturar joy ijarasi",
+    },
+    {
+        id: "Davlat hovli ijarasi",
+    },
+    {
+        id: "Tijoriy bino ijarasi",
+    },{
+        id: "Yer ijarasi",
     }
 ]
