@@ -52,18 +52,26 @@ export const GeneralMap = () => {
                                 balloonContent: `<div id="${el.id}" class="flex flex-col w-64 h-48 p-4 rounded-lg overflow-hidden">
                                    <a href="/house/1" target="_blank">
                                       <div class="flex gap-4">
-    <!--                                    <div class="w-24 h-24">-->
-    <!--                                        <img class="w-24 h-24 aspect-square" src="/img/house.jpg" alt="house image">-->
-    <!--                                    </div>-->
                                         <div class="w-full" class="flex flex-col gap-2">
-<!--                                          <h3 class="uppercase text-sm font-bold tracking-tight">Golden House LTD</h3>-->
-                                          <p class="text-sm font-bold text-cyan-500">60 000 000 so'm</p>
+                                          <p class="text-sm font-bold text-cyan-500">
+                                          <span class="italic">Narxi: </span>60 000 000 so'm</p>
                                         </div>
                                       </div>
                                       <div class="flex flex-col gap-2 border-t mt-4">
-<!--                                          <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              -->
-<!--                                             <span class="italic">Adress:</span> Tashkent, Shayxontoxur tumani, Tinchlik 1-1-->
-<!--                                           </p>-->
+                                      <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                            <span class="italic">Uy-joy turi:</span> Xususiy
+                                      </p>
+                                       <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                            <span class="italic">Umumiy maydon:</span> 400kv metr
+                                      </p>
+                                       <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
+                                            <span class="italic">Yashash maydoni:</span> 100 kv metr
+                                      </p>
+<!--                                      Uy-joy turi: (Xususiy uy, Kvartira, Tijorat binosi, Yer)-->
+<!--                            •\tUmumiy maydon: 400 Kv metr-->
+<!--                            •\tYashash maydoni: 100 Kv metr-->
+<!--                            •\tNarxi: 500 000 000 so’m-->
+
                                             <p class="text-neutral-600 text-sm font-semibold tracking-tight">                              
                                             <span class="italic">Nomer:</span> +998 (90) 123-45-67 <a class="text-neutral-600 text-sm font-semibold tracking-tight underline" href="https://t.me/+998901234567" target="_blank">t.me</a>
                                             </p>
