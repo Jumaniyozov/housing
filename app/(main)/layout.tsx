@@ -5,7 +5,7 @@ export const metadata = {
     description: 'Search for houses',
 }
 
-export default function RootLayout({
+export default function MainLayout({
                                        children,
                                    }: {
     children: React.ReactNode

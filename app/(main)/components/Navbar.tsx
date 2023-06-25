@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button} from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import {Login} from "@/components/authorization/Login";
+import {Registration} from "@/components/authorization/Registration";
 
 interface NavbarProps {
 
@@ -23,12 +24,8 @@ const Navbar = (props: NavbarProps) => {
 
                     </div>
                     <div className="flex justify-end w-1/2 gap-4">
-                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">
-                            Login
-                        </Button>
-                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">
-                            Ro`yxatdan o`tish
-                        </Button>
+                        <Login/>
+                        <Registration/>
                     </div>
                 </div>
             </div>
