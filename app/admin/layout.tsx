@@ -11,9 +11,9 @@ export default function AdminLayout({
     children: React.ReactNode
 }) {
     return (
-        <>
+        <div className="flex w-full">
             <Sidebar/>
             {children}
-        </>
+        </div>
     )
 }

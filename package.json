@@ -15,6 +15,7 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
+    "@tanstack/react-table": "^8.9.3",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
@@ -35,6 +36,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/yandex-maps": "^2.1.29"
   }
 }
