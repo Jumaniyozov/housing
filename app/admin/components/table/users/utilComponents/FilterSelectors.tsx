@@ -41,10 +41,15 @@ export const FilterObject = (
     );
 };
 
-export const FilterArea = () => {
+export const FilterArea = (
+    {onChange, value}: FilterProps
+) => {
 
     return (
-        <Select>
+        <Select
+            onValueChange={onChange}
+            value={value === "" ? undefined : value}
+        >
             <SelectTrigger className="w-full">
                 <SelectValue placeholder="Xududi"/>
             </SelectTrigger>

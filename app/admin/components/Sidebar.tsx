@@ -1,10 +1,10 @@
+'use client';
+
 import AdminLogoutButton from "@/app/admin/components/AdminLogoutButton";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
-
-interface SidebarProps {
-
-}
+import {usePathname} from "next/navigation";
+import {useState} from "react";
 
 const links = [
     {
@@ -12,28 +12,30 @@ const links = [
         title: "Foydalanuvchilar ro`yxati",
         isActive: true,
     }, {
-        pathname: "/admin",
+        pathname: "/admin/houseads",
         title: "E`lonlar",
         isActive: false,
     }, {
-        pathname: "/admin",
+        pathname: "/admin/issues",
         title: "Shikoyatlar",
         isActive: false,
     }, {
-        pathname: "/admin",
+        pathname: "/admin/categories",
         title: "Kategoriyalar",
         isActive: false,
     },
     {
-        pathname: "/admin",
+        pathname: "/admin/plans",
         title: "Tariflar/Planlar",
         isActive: false,
     },
 ]
 
 
-const Sidebar = (props: SidebarProps) => {
-    const {} = props;
+const Sidebar = () => {
+    const pathname = usePathname();
+    // const [currentActive, setCurrentActive] = useState<string>("/admin");
+
 
     return (
         <div className="min-h-screen h-auto bg-brandDark-900 w-2/12 flex">
@@ -49,7 +51,7 @@ const Sidebar = (props: SidebarProps) => {
                                     pathname: el.pathname,
                                 }} className={
                                     cn(
-                                        el.isActive ? "bg-brand-500" : "hover:text-brand-500",
+                                        pathname === el.pathname ? "bg-brand-500" : "hover:text-brand-500",
                                         "text-white transition p-3 w-full flex"
                                     )
                                 }>{el.title}</Link>

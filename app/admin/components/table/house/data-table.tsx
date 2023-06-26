@@ -23,14 +23,14 @@ import {
     FilterDesigner,
     FilterDocument,
     FilterObject
-} from "@/app/admin/components/table/utilComponents/FilterSelectors";
+} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function HouseDataTable<TData, TValue>({
                                              columns,
                                              data,
                                          }: DataTableProps<TData, TValue>) {
@@ -77,17 +77,12 @@ export function DataTable<TData, TValue>({
                     }
                     className="max-w-sm"
                 />
-                <FilterObject
-                    value={(table.getColumn("obyekt")?.getFilterValue() as string) ?? undefined}
+                <FilterArea
+                    value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}
                     onChange={(val) =>
-                        table.getColumn("obyekt")?.setFilterValue(val)
+                        table.getColumn("area")?.setFilterValue(val)
                     }
                 />
-                <FilterArea/>
-                <FilterClient/>
-                <FilterDesigner/>
-                <FilterDocument/>
-
                 {/*TODO: qaysi rowni ko'rsatishni boshqaruvchi filtr*/}
                 {/*<DropdownMenu>*/}
                 {/*    <DropdownMenuTrigger asChild>*/}
@@ -116,8 +111,8 @@ export function DataTable<TData, TValue>({
                 {/*    </DropdownMenuContent>*/}
                 {/*</DropdownMenu>*/}
             </div>
-            <div className="rounded-md border">
-                <Table>
+            <div className="border">
+                <Table className="font-sansNarrow">
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
