@@ -17,13 +17,10 @@ import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {useState} from "react";
-import {
-    FilterArea,
-    FilterClient,
-    FilterDesigner,
-    FilterDocument,
-    FilterObject
-} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
+import {FilterArea} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
+import {PlusIcon} from "lucide-react";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -31,15 +28,15 @@ interface DataTableProps<TData, TValue> {
 }
 
 export function HouseDataTable<TData, TValue>({
-                                             columns,
-                                             data,
-                                         }: DataTableProps<TData, TValue>) {
+                                                  columns,
+                                                  data,
+                                              }: DataTableProps<TData, TValue>) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = useState({})
-    // const [pagination, setPagination] = useState<PaginationState>({pageSize: 5, pageIndex: 0})
+    const pathname = usePathname();
 
 
     const table = useReactTable({
@@ -68,21 +65,28 @@ export function HouseDataTable<TData, TValue>({
 
     return (
         <div className="w-full">
-            <div className="flex items-center py-4 gap-3">
+            <div className="flex items-center py-4 gap-3 w-full">
                 <Input
                     placeholder="ID raqami..."
                     value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("id")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm"
+                    className="w-5/12"
                 />
-                <FilterArea
-                    value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}
-                    onChange={(val) =>
-                        table.getColumn("area")?.setFilterValue(val)
-                    }
-                />
+                <div className="w-5/12">
+                    <FilterArea
+                        value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}
+                        onChange={(val) =>
+                            table.getColumn("area")?.setFilterValue(val)
+                        }
+                    />
+                </div>
+                <Link href={`${pathname}/add`}
+                      className="bg-brand-500 hover:bg-brand-600 w-2/12 flex items-center text-white p-2">
+                    E`lon qo`shish <PlusIcon className="w-5 h-5"/>
+                </Link>
+
                 {/*TODO: qaysi rowni ko'rsatishni boshqaruvchi filtr*/}
                 {/*<DropdownMenu>*/}
                 {/*    <DropdownMenuTrigger asChild>*/}
