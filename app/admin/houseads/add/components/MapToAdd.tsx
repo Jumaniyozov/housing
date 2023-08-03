@@ -32,7 +32,7 @@ export const MapToAdd = () => {
                     geometry={placemark}
                     options={{
                         iconLayout: "default#image",
-                        iconImageSize: [52, 58],
+                        iconImageSize: [42, 48],
                         iconImageHref: "/icons/pin.png",
                     }}
                 />

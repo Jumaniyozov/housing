@@ -2,19 +2,10 @@ import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import {PriceSelect} from "@/app/admin/houseads/add/components/PriceSelect";
-import {RieltorSelect} from "@/app/admin/houseads/add/components/RieltorSelect";
-import {FurnitureSelect} from "@/app/admin/houseads/add/components/FurnitureSelect";
-import {HouseTypeSelect} from "@/app/admin/houseads/add/components/HouseTypeSelect";
-import {ElectricitySelect} from "@/app/admin/houseads/add/components/ElectricitySelect";
-import {HouseConditionSelect} from "@/app/admin/houseads/add/components/HouseConditionSelect";
-import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
-import {WaterSelect} from "@/app/admin/houseads/add/components/WaterSelect";
-import {WarmingSelect} from "@/app/admin/houseads/add/components/WarmingSelect";
-import {GasSelect} from "@/app/admin/houseads/add/components/GasSelect";
-import {SanuzelSelect} from "@/app/admin/houseads/add/components/SanuzelSelect";
-import {YearSelect} from "@/app/admin/houseads/add/components/YearSelect";
 import {MapToAdd} from "@/app/admin/houseads/add/components/MapToAdd";
 import {SaveButton} from "@/app/admin/houseads/add/components/SaveButton";
+import {Switch} from "@/components/ui/switch"
+import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
 
 export default function AddHouseAd() {
     return (
@@ -26,128 +17,149 @@ export default function AddHouseAd() {
                             E`lon qo`shish
                         </h1>
                     </div>
-                    <div className="flex flex-col gap-6">
-                        <div className="flex flex-col gap-3 border-b-2 py-4 border-brand-500">
-                            <h3>Asosiy ma`lumotlar</h3>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="name">Nomi</Label>
-                                <Input id="name" type="text"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label>Kategoriya</Label>
-                                <CategorySelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Rasm Yuklash</Label>
-                                <Input id="images" accept="image/png, image/jpeg" type="file"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="description">Ma`lumot</Label>
-                                <Textarea id="description" placeholder="E`lon haqida qo`shimcha ma`lumot"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="price">Narxi</Label>
-                                <div className="flex gap-3">
-                                    <Input id="price" type="number"/>
-                                    <PriceSelect/>
-                                </div>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label>Rieltor yoki Shaxsiy</Label>
-                                <RieltorSelect/>
-                            </div>
-
-                            <div className=" w-full items-center gap-1.5">
-                                <div className="h-64 w-[480px] rounded-md overflow-hidden">
-                                    <Label>Xaritada joylashuvi</Label>
-                                    <MapToAdd/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-3 border-b-2 py-4 border-brand-500">
-                            <h3>Uy ma`lumotlari</h3>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Xonalar soni</Label>
-                                <Input id="images" type="text"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Umumiy maydoni</Label>
-                                <Input id="images" type="number" placeholder="㎡"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Yashash maydoni</Label>
-                                <Input id="images" type="number" placeholder="㎡"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Uy qavati</Label>
-                                <Input id="images" type="number"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Qavat balandligi</Label>
-                                <Input id="images" type="number" placeholder="m"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Uy xolati</Label>
-                                <HouseConditionSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Mebellanganmi?</Label>
-                                <FurnitureSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Mebellanganmi?</Label>
-                                <FurnitureSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Uy turi</Label>
-                                <HouseTypeSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Elektr ta`minot</Label>
-                                <ElectricitySelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Suv ta`minot</Label>
-                                <WaterSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Isitish tizimi</Label>
-                                <WarmingSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Gaz ta`minoti</Label>
-                                <GasSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Sanuzel</Label>
-                                <SanuzelSelect/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="images">Qurilish yili</Label>
-                                <YearSelect/>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-3 border-b-2 py-4 border-brand-500">
-                            <h3>Kontakt ma`lumotlari</h3>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="username">Murojat uchun shaxs</Label>
-                                <Input id="username" type="text" placeholder="F.I.SH"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="mail">Email</Label>
-                                <Input id="mail" type="email" placeholder="test@mail.com"/>
-                            </div>
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="phone">Telefon raqami</Label>
-                                <Input id="phone" type="text" placeholder="+998901234567"/>
-                            </div>
-                        </div>
-                        <div className="w-full max-w-sm">
-                            <SaveButton/>
+                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                        <Label htmlFor="price">Turi</Label>
+                        <div className="flex gap-3">
+                            <CategorySelect/>
                         </div>
                     </div>
+                    <HouseAdd/>
                 </div>
             </div>
         </main>
+    )
+}
+
+
+const HouseAdd = () => {
+    return (
+        <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3 border-b-2 py-4 border-brand-500">
+                <h3>Sotiladigan uy</h3>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="name">E`lon nomi</Label>
+                    <Input id="name" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="price">Summa</Label>
+                    <div className="flex gap-3">
+                        <Input id="sum" type="number"/>
+                        <PriceSelect/>
+                    </div>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="images">Rasm Yuklash</Label>
+                    <Input id="images" accept="image/png, image/jpeg" type="file" multiple/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="description">Tavsif</Label>
+                    <Textarea id="description" placeholder="E`lon haqida qo`shimcha ma`lumot" maxLength={1000}/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Xonalar soni</Label>
+                    <Input id="rooms" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Umumiy maydon (metr kvadrat ko`rinishida)</Label>
+                    <Input id="area" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Telefon raqami</Label>
+                    <Input id="phone" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Telegram manzili</Label>
+                    <Input id="telegram" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>E`lonni muddati (kun hisobida)</Label>
+                    <Input id="activedate" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>E`lonni avtomatik aktivlashtirish</Label>
+                    <Switch/>
+                </div>
+
+                <div className=" w-full items-center gap-1.5">
+                    <div className="h-64 w-[480px] rounded-md overflow-hidden">
+                        <Label>Xaritada joylashuvi</Label>
+                        <MapToAdd/>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full max-w-sm">
+                <SaveButton/>
+            </div>
+        </div>
+    )
+}
+
+const RentAdd = () => {
+    return (
+        <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3 border-b-2 py-4 border-brand-500">
+                <h3>Arenda kvartira</h3>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="name">E`lon nomi</Label>
+                    <Input id="name" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="price">Summa</Label>
+                    <div className="flex gap-3">
+                        <Input id="sum" type="number"/>
+                        <PriceSelect/>
+                    </div>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="images">Rasm Yuklash</Label>
+                    <Input id="images" accept="image/png, image/jpeg" type="file" multiple/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label htmlFor="description">Tavsif</Label>
+                    <Textarea id="description" placeholder="E`lon haqida qo`shimcha ma`lumot" maxLength={1000}/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Xonalar soni</Label>
+                    <Input id="rooms" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Umumiy maydon (metr kvadrat ko`rinishida)</Label>
+                    <Input id="area" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Yashash maydon (metr kvadrat ko`rinishida)</Label>
+                    <Input id="arealive" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Ko’p qavatli xonadon qavati</Label>
+                    <Input id="arealive" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Telefon raqami</Label>
+                    <Input id="phone" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>Telegram manzili</Label>
+                    <Input id="telegram" type="text"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>E`lonni muddati (kun hisobida)</Label>
+                    <Input id="activedate" type="number"/>
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Label>E`lonni avtomatik aktivlashtirish</Label>
+                    <Switch/>
+                </div>
+                <div className=" w-full items-center gap-1.5">
+                    <div className="h-64 w-[480px] rounded-md overflow-hidden">
+                        <Label>Xaritada joylashuvi</Label>
+                        <MapToAdd/>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full max-w-sm">
+                <SaveButton/>
+            </div>
+        </div>
     )
 }

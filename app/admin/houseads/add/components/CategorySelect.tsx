@@ -10,20 +10,8 @@ import {
 } from "@/components/ui/select";
 
 const vals = [
-    {name: "Sotiladigan uy"},
-    {name: "Sotiladigan kvartira"},
-    {name: "Sotiladigan yangi uy"},
-    {name: "Sotiladigan tijoriy bino"},
-    {name: "Sotiladigan noturar jo"},
-    {name: "Sotiladigan dala hovli"},
-    {name: "Sotiladigan yer"},
-    {name: "Uy ijarasi"},
-    {name: "Kvartira ijarasi"},
-    {name: "Yangi uy ijarasi"},
-    {name: "Tijoriy bino ijarasi"},
-    {name: "Noturar joy ijarasi"},
-    {name: "Dala hovli ijarasi"},
-    {name: "Yer ijarasi"},
+    {name: "Sotiladigan uy", id: "house"},
+    {name: "Arenda", id: "rent"},
 ]
 
 export const CategorySelect = () => {
@@ -34,7 +22,7 @@ export const CategorySelect = () => {
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Kategoriya</SelectLabel>
+                    <SelectLabel>Turi</SelectLabel>
                     {vals.map((el) => (
                         <SelectItem key={el.name} value={el.name}>{el.name}</SelectItem>
                     ))}

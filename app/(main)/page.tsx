@@ -2,9 +2,11 @@ import {GeneralMap} from "@/components/map/GeneralMap";
 import Filters from "@/app/(main)/components/Filters";
 import Footer from "@/app/(main)/components/Footer";
 
-export default function Home() {
+export default async function Home() {
+
     return (
         <main className="flex h-full flex-col">
+
             <div className="w-8/12 mx-auto xl:h-[260px]">
                 <Filters/>
             </div>

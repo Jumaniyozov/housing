@@ -5,6 +5,7 @@ import {IMapState, MapEvent} from "yandex-maps";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {generatePlaceMarks, placeMarkData,} from "@/lib/generatePlacemarks";
+import {useSession} from "next-auth/react";
 
 const defaultState: IMapState = {
     center: [41.319592, 69.254302],
@@ -13,6 +14,10 @@ const defaultState: IMapState = {
 };
 
 export const GeneralMap = () => {
+    const session = useSession()
+
+    console.log(session);
+
     const router = useRouter();
     const [placemarks, setPlacemarks] = useState<placeMarkData[]>(() => {
         return generatePlaceMarks(50);
@@ -73,7 +78,8 @@ export const GeneralMap = () => {
                                 </div>
                                 </div>`,
                             }}
-                            onClick={() => {}}
+                            onClick={() => {
+                            }}
                         />
                     ))}
                 </Clusterer>

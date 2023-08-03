@@ -1,14 +1,19 @@
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import {Login} from "@/components/authorization/Login";
 import {Registration} from "@/components/authorization/Registration";
+import {getServerSession} from "next-auth";
+import {options} from "@/app/api/auth/[...nextauth]/options";
+import LogoutButton from "@/app/(main)/components/LogoutButton";
+import {Button} from "@/components/ui/button";
 
 interface NavbarProps {
 
 }
 
-const Navbar = (props: NavbarProps) => {
+const Navbar = async (props: NavbarProps) => {
+    const session = await getServerSession(options);
+
     const {} = props;
 
     return (
@@ -21,11 +26,23 @@ const Navbar = (props: NavbarProps) => {
                 </div>
                 <div className="w-1/2 flex items-center">
                     <div className="flex justify-start w-1/2">
-
                     </div>
                     <div className="flex justify-end w-1/2 gap-4">
-                        <Login/>
-                        <Registration/>
+                        {session ? (
+                                <>
+                                    <LogoutButton/>
+                                </>
+                            )
+                            : (
+                                <>
+                                    {/*<Login/>*/}
+                                    <Link href={"/auth/login"} className="bg-brand-500 hover:bg-brand-600">
+                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Login</Button>
+                                    </Link>
+                                    <Registration/>
+                                </>
+                            )
+                        }
                     </div>
                 </div>
             </div>
