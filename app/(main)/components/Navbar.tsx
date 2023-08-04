@@ -35,11 +35,12 @@ const Navbar = async (props: NavbarProps) => {
                             )
                             : (
                                 <>
-                                    {/*<Login/>*/}
                                     <Link href={"/auth/login"} className="bg-brand-500 hover:bg-brand-600">
                                         <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Login</Button>
                                     </Link>
-                                    <Registration/>
+                                    <Link href={"/auth/register"}>
+                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Ro`yxatdan o`tish</Button>
+                                    </Link>
                                 </>
                             )
                         }

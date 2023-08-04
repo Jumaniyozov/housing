@@ -5,6 +5,7 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {signIn} from "next-auth/react";
+import Link from "next/link";
 
 
 function Login() {
@@ -45,8 +46,11 @@ function Login() {
                         <Input id="password" type="password" className="col-span-3"
                                onChange={(e) => (password.current = e.target.value)} required/>
                     </div>
-                    <div>
+                    <div className="flex justify-between">
                         <Button className="bg-brand-500 hover:bg-brand-600" type="submit">Kirish</Button>
+                        <Link href={"/auth/register"}>
+                            <Button className="bg-brand-500 hover:bg-brand-600">Ro`yxatdan o`tish</Button>
+                        </Link>
                     </div>
                 </form>
             </div>

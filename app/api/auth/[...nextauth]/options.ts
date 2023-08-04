@@ -1,12 +1,5 @@
-import type {NextAuthOptions, User} from 'next-auth';
+import type {NextAuthOptions} from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
-
-interface CustomUser extends User {
-    access_token: string;
-    access_token_expires_at: string;
-    user_id: number;
-}
 
 export const options: NextAuthOptions = {
     providers: [
@@ -48,11 +41,11 @@ export const options: NextAuthOptions = {
     callbacks: {
         jwt: async (params) => {
             const {token, user} = params;
-            const customUser = user as CustomUser;
 
             if (user) {
-                token.access_token = customUser.access_token;
-                token.user_id = customUser.user_id;
+                token.access_token = user.access_token;
+                token.role = user.role;
+                token.id = user.id;
             }
             return token;
         },
@@ -60,10 +53,9 @@ export const options: NextAuthOptions = {
             const {session, token, user} = params;
 
             if (token) {
-                // @ts-ignore
                 session.user.access_token = token.access_token;
-                // @ts-ignore
-                session.user.user_id = token.user_id;
+                session.user.id = token.user_id;
+                session.user.role = token.role;
             }
             return session;
         },
