@@ -20,37 +20,12 @@ export type UserDataType = {
     // plan: string,
     // isActive: boolean
     name: string;
-    phone_number: string;
-    email: string;
-    sex: string;
-    entity: string;
-    company_name: string;
-    company_type: string;
-    company_address: string;
-    company_contact: string;
-    balance: number;
-    is_active: boolean;
-    user_role: string;
-    created_at: string;
+    price: number;
+    duration: number;
     // updated_at: string;
 }
 
 export const columns: ColumnDef<UserDataType>[] = [
-    // {
-    //     accessorKey: "no",
-    //     header: ({column}) => {
-    //         return (
-    //             <Button
-    //                 variant="ghost"
-    //                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-    //             >
-    //                 №
-    //                 <ArrowUpDown className="ml-2 h-4 w-4"/>
-    //             </Button>
-    //         )
-    //     },
-    //     cell: ({row}) => <div>{row.getValue("no")}</div>,
-    // },
     {
         accessorKey: "id",
         header: ({column}) => {
@@ -66,8 +41,6 @@ export const columns: ColumnDef<UserDataType>[] = [
         },
         cell: ({row}) => <div>{row.getValue("id")}</div>,
     },
-    // is_active
-    // user_role
     {
         accessorKey: "name",
         header: ({column}) => {
@@ -76,7 +49,7 @@ export const columns: ColumnDef<UserDataType>[] = [
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Ism
+                    Nomi
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
@@ -84,109 +57,34 @@ export const columns: ColumnDef<UserDataType>[] = [
         cell: ({row}) => <div>{row.getValue("name")}</div>,
     },
     {
-        accessorKey: "phone_number",
+        accessorKey: "price",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Telefon raqami
+                    Narxi
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("phone_number")}</div>,
+        cell: ({row}) => <div>{row.getValue("price")}</div>,
     },
     {
-        accessorKey: "email",
+        accessorKey: "duration",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Email
+                    Muddati
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("email")}</div>,
-    },
-    {
-        accessorKey: "sex",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Jinsi
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("sex")}</div>,
-    },
-    {
-        accessorKey: "entity",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Shaxs turi
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("entity")}</div>,
-    },
-    {
-        accessorKey: "balance",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Balansi
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("balance")}</div>,
-    },
-    {
-        accessorKey: "user_role",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Foydalanuvchi turi
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("user_role")}</div>,
-    },
-    {
-        accessorKey: "is_active",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Aktivmi
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("is_active") ? "Ha" : "Yo`q"}</div>,
+        cell: ({row}) => <div>{row.getValue("duration")}</div>,
     },
     {
         id: "actions",

@@ -24,8 +24,8 @@ import {CompanyTypeSelector} from "@/app/auth/register/components/CompanyTypeSel
 
 
 function Register() {
-    const baseURL = `http://${process.env.NEXT_PUBLIC_API_URL}/api/users/register`;
-    const loginURL = `http://${process.env.NEXT_PUBLIC_SELF_URL}/auth/login`;
+    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/users/register`;
+    const loginURL = `${process.env.NEXT_PUBLIC_SELF_URL}/auth/login`;
     const router = useRouter();
 
     const [errMsg, setErrMsg] = useState("");

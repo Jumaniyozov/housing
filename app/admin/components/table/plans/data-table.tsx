@@ -17,6 +17,10 @@ import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {useState} from "react";
+import {FilterArea} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
+import Link from "next/link";
+import {PlusIcon} from "lucide-react";
+import {usePathname} from "next/navigation";
 // import {
 //     FilterArea,
 //     FilterClient,
@@ -30,7 +34,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
 }
 
-export function UserDataTable<TData, TValue>({
+export function PlansDataTable<TData, TValue>({
                                                  columns,
                                                  data,
                                              }: DataTableProps<TData, TValue>) {
@@ -40,6 +44,7 @@ export function UserDataTable<TData, TValue>({
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = useState({})
+    const pathname = usePathname();
 
 
     const table = useReactTable({
@@ -75,8 +80,12 @@ export function UserDataTable<TData, TValue>({
                     onChange={(event) =>
                         table.getColumn("id")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm"
+                    className="w-5/12"
                 />
+                <Link href={`${pathname}/add`}
+                      className="bg-brand-500 hover:bg-brand-600 w-2/12 flex items-center text-white p-2">
+                    Plan qo`shish <PlusIcon className="w-5 h-5"/>
+                </Link>
             </div>
             <div className="border">
                 <Table className="font-sansNarrow">

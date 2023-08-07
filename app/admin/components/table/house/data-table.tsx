@@ -74,14 +74,14 @@ export function HouseDataTable<TData, TValue>({
                     }
                     className="w-5/12"
                 />
-                <div className="w-5/12">
-                    <FilterArea
-                        value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}
-                        onChange={(val) =>
-                            table.getColumn("area")?.setFilterValue(val)
-                        }
-                    />
-                </div>
+                {/*<div className="w-5/12">*/}
+                {/*    <FilterArea*/}
+                {/*        value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}*/}
+                {/*        onChange={(val) =>*/}
+                {/*            table.getColumn("area")?.setFilterValue(val)*/}
+                {/*        }*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <Link href={`${pathname}/add`}
                       className="bg-brand-500 hover:bg-brand-600 w-2/12 flex items-center text-white p-2">
                     E`lon qo`shish <PlusIcon className="w-5 h-5"/>

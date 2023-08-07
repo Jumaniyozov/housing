@@ -6,7 +6,7 @@ import {getServerSession} from "next-auth";
 import {options} from "@/app/api/auth/[...nextauth]/options";
 
 async function fetchUsers() {
-    const baseURL = `http://${process.env.NEXT_PUBLIC_API_URL}/api/users?page=1&per_page=1000`
+    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/users?page=1&per_page=1000`
     const session = await getServerSession(options);
 
 

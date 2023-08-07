@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import {Registration} from "@/components/authorization/Registration";
 import {getServerSession} from "next-auth";
 import {options} from "@/app/api/auth/[...nextauth]/options";
 import LogoutButton from "@/app/(main)/components/LogoutButton";
@@ -30,6 +29,9 @@ const Navbar = async (props: NavbarProps) => {
                     <div className="flex justify-end w-1/2 gap-4">
                         {session ? (
                                 <>
+                                    <Link href={"/admin"} className="bg-brand-500 hover:bg-brand-600">
+                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Admin Panel</Button>
+                                    </Link>
                                     <LogoutButton/>
                                 </>
                             )
@@ -39,7 +41,8 @@ const Navbar = async (props: NavbarProps) => {
                                         <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Login</Button>
                                     </Link>
                                     <Link href={"/auth/register"}>
-                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Ro`yxatdan o`tish</Button>
+                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Ro`yxatdan
+                                            o`tish</Button>
                                     </Link>
                                 </>
                             )

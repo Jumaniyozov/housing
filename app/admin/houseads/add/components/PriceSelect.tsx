@@ -14,9 +14,17 @@ const vals = [
     {name: "y.e."},
 ]
 
-export const PriceSelect = () => {
+export const PriceSelect = ({handleChange}: {
+    handleChange: (id: string, val: string | number | boolean) => void
+}) => {
+
+    const onChange = (val: string) => {
+        handleChange("currency", val)
+    }
+
+
     return (
-        <Select>
+        <Select onValueChange={onChange}>
             <SelectTrigger className="w-full">
                 <SelectValue placeholder="Valyuta"/>
             </SelectTrigger>

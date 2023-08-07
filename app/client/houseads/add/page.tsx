@@ -20,7 +20,7 @@ export default function AddHouseAd() {
                     <div className="grid w-full max-w-sm items-center gap-1.5">
                         <Label htmlFor="price">Turi</Label>
                         <div className="flex gap-3">
-                            <CategorySelect/>
+                            {/*<CategorySelect/>*/}
                         </div>
                     </div>
                     <HouseAdd/>
@@ -44,7 +44,7 @@ const HouseAdd = () => {
                     <Label htmlFor="price">Summa</Label>
                     <div className="flex gap-3">
                         <Input id="sum" type="number"/>
-                        <PriceSelect/>
+                        {/*<PriceSelect/>*/}
                     </div>
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -107,7 +107,7 @@ const RentAdd = () => {
                     <Label htmlFor="price">Summa</Label>
                     <div className="flex gap-3">
                         <Input id="sum" type="number"/>
-                        <PriceSelect/>
+                        {/*<PriceSelect/>*/}
                     </div>
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">

@@ -1,22 +1,23 @@
 "use client"
 
-import React, {useRef} from 'react';
+import React, {useState} from 'react';
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import {signIn} from "next-auth/react";
 import Link from "next/link";
+import {signIn} from "next-auth/react";
 
 
 function Login() {
-    const userName = useRef("");
-    const password = useRef("");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+
         const result = await signIn("credentials", {
-            login: userName.current,
-            password: password.current,
+            login: login,
+            password: password,
             redirect: true,
             callbackUrl: "/"
         });
@@ -36,7 +37,8 @@ function Login() {
                         <Label htmlFor="login" className="text-right">
                             Login
                         </Label>
-                        <Input id="login" className="col-span-3" onChange={(e) => (userName.current = e.target.value)}
+                        <Input id="login" className="col-span-3"
+                               onChange={(e) => (setLogin(e.currentTarget.value))}
                                required/>
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -44,7 +46,7 @@ function Login() {
                             Parol
                         </Label>
                         <Input id="password" type="password" className="col-span-3"
-                               onChange={(e) => (password.current = e.target.value)} required/>
+                               onChange={(e) => (setPassword(e.currentTarget.value))} required/>
                     </div>
                     <div className="flex justify-between">
                         <Link href={"/auth/register"}>

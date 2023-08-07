@@ -5,7 +5,9 @@ import {MapEvent} from "yandex-maps";
 import {useState} from "react";
 
 
-export const MapToAdd = () => {
+export const MapToAdd = ({handleChange}: {
+    handleChange: (id: string, val: string | number | boolean) => void
+}) => {
     const defaultState = {
         center: [41.319592, 69.254302],
         zoom: 12,
@@ -16,7 +18,10 @@ export const MapToAdd = () => {
 
     const addPlaceMark = (e: MapEvent) => {
         // setObjectEnterOpen(true);
-        setPlacemark(e.get("coords"));
+        const coords = e.get("coords");
+        setPlacemark(coords);
+        handleChange("lat", coords[0]);
+        handleChange("long", coords[1]);
     };
 
     return (
