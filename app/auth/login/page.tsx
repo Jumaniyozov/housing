@@ -47,10 +47,10 @@ function Login() {
                                onChange={(e) => (password.current = e.target.value)} required/>
                     </div>
                     <div className="flex justify-between">
-                        <Button className="bg-brand-500 hover:bg-brand-600" type="submit">Kirish</Button>
                         <Link href={"/auth/register"}>
-                            <Button className="bg-brand-500 hover:bg-brand-600">Ro`yxatdan o`tish</Button>
+                            <Button className="bg-brand-500 hover:bg-brand-600" type="button">Ro`yxatdan o`tish</Button>
                         </Link>
+                        <Button className="bg-brand-500 hover:bg-brand-600" type="submit">Kirish</Button>
                     </div>
                 </form>
             </div>

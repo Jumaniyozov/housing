@@ -15,11 +15,13 @@ const links = [
         pathname: "/admin/houseads",
         title: "E`lonlar",
         isActive: false,
-    }, {
-        pathname: "/admin/issues",
-        title: "Shikoyatlar",
-        isActive: false,
-    }, {
+    },
+    // {
+    //     pathname: "/admin/issues",
+    //     title: "Shikoyatlar",
+    //     isActive: false,
+    // },
+    {
         pathname: "/admin/categories",
         title: "Kategoriyalar",
         isActive: false,

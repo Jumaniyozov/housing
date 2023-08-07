@@ -12,14 +12,13 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
-export type UserDataType = {
-    id: number,
+export type CategoryDataType = {
+    id: string,
     name: string;
-    price: number;
-    duration: number;
+    is_rent: boolean;
 }
 
-export const columns: ColumnDef<UserDataType>[] = [
+export const columns: ColumnDef<CategoryDataType>[] = [
     {
         accessorKey: "id",
         header: ({column}) => {
@@ -43,7 +42,7 @@ export const columns: ColumnDef<UserDataType>[] = [
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Ism
+                    Nomi
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
@@ -51,34 +50,19 @@ export const columns: ColumnDef<UserDataType>[] = [
         cell: ({row}) => <div>{row.getValue("name")}</div>,
     },
     {
-        accessorKey: "price",
+        accessorKey: "is_rent",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Telefon raqami
+                    Arenda turimi
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("price")}</div>,
-    },
-    {
-        accessorKey: "duration",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Email
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("duration")}</div>,
+        cell: ({row}) => <div>{row.getValue("is_rent") ? "Ha" : "Yo`q"}</div>,
     },
     {
         id: "actions",

@@ -10,19 +10,24 @@ import {
 } from "@/components/ui/select";
 
 const vals = [
-    {name: "Sotiladigan uy", id: "house"},
-    {name: "Arenda", id: "rent"},
+    {name: "Erkak", id: "M"},
+    {name: "Ayol", id: "F"},
 ]
 
-export const CategorySelect = () => {
+export const GenderSelector = ({handleChange}: { handleChange: (id: string, val: string) => void }) => {
+    const onChange = (val: string) => {
+        handleChange("sex", val)
+    }
+
+
     return (
-        <Select>
-            <SelectTrigger className="w-full">
-                <SelectValue placeholder="Kategoriyani tanlang"/>
+        <Select onValueChange={onChange} required>
+            <SelectTrigger className="w-full col-span-3">
+                <SelectValue placeholder="Jins"/>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Turi</SelectLabel>
+                    <SelectLabel>Jinsingizni tanlang</SelectLabel>
                     {vals.map((el) => (
                         <SelectItem key={el.id} value={el.id}>{el.name}</SelectItem>
                     ))}
