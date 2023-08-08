@@ -5,7 +5,7 @@ import ImageSection from "@/app/house/[id]/components/ImageSection";
 import HeaderSection from "@/app/house/[id]/components/HeaderSection";
 import {MapPin} from "lucide-react";
 import {useParams} from "next/navigation";
-import {Ads} from "@/components/store/ads";
+import {Ads} from "@/types/Ads";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads`
 

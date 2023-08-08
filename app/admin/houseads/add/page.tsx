@@ -1,7 +1,7 @@
 import {HouseAdd} from "@/app/admin/houseads/add/components/HouseAdd";
 
 
-async function fetchCategories() {
+export async function fetchCategories() {
     const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/categories?page=1&per_page=1000`
     const res = await fetch(baseURL);
     const data = await res.json();
@@ -9,7 +9,7 @@ async function fetchCategories() {
     return categories;
 }
 
-async function fetchPlans() {
+export async function fetchPlans() {
     const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/plans?page=1&per_page=1000`
     const res = await fetch(baseURL);
     const data = await res.json();
@@ -20,9 +20,8 @@ async function fetchPlans() {
 
 export default async function AddHouseAd() {
     const categories = await fetchCategories();
-    // useCategoriesStore().setCategories(categories);
     const plans = await fetchPlans()
-    // usePlansStore().setPlans(plans);
+
 
     return (
         <main className="flex h-full flex-col w-full">
@@ -34,8 +33,8 @@ export default async function AddHouseAd() {
                         </h1>
                     </div>
                     <HouseAdd
-                        // categories={categories}
-                        // plans={plans}
+                        categories={categories}
+                        plans={plans}
                     />
                 </div>
             </div>

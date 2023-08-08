@@ -10,24 +10,18 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
+import {Category} from "@/types/Categories";
 
-const vals = [
-    {name: "Sotiladigan uy", id: "2", is_rent: false},
-    {name: "Arenda kvartira", id: "1", is_rent: true},
-]
-
-export const CategorySelect = ({handleChange}: {
-    handleChange: (id: string, val: string | number | boolean) => void
+export const CategorySelect = ({handleChange, data}: {
+    handleChange: (id: string, val: string | number | boolean) => void,
+    data: Category[]
 }) => {
-    // const categories = useCategoriesStore(state => state.categories);
-    // console.log(categories);
-
     const onChange = (val: string) => {
         handleChange("category", val);
-        const is_rent = val === "2";
-        handleChange("is_rent", is_rent);
+        const category = data.find((el) => el.id.toString() === val);
+        const is_rent = category?.is_rent;
+        handleChange("is_rent", is_rent!);
     }
-
 
     return (
         <Select onValueChange={onChange}>
@@ -37,8 +31,8 @@ export const CategorySelect = ({handleChange}: {
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Kategoriya</SelectLabel>
-                    {vals.map((el) => (
-                        <SelectItem key={el.id} value={el.id}>{el.name}</SelectItem>
+                    {data.map((el) => (
+                        <SelectItem key={el.id} value={el.id.toString()}>{el.name}</SelectItem>
                     ))}
                 </SelectGroup>
             </SelectContent>

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Ads} from "@/components/store/ads";
+import {Ads} from "@/types/Ads";
+
 
 
 const HeaderSection = ({data}: {
@@ -8,13 +9,11 @@ const HeaderSection = ({data}: {
     const date = new Date(data.created_at);  // 2009-11-10
     const month = date.toLocaleString('default', {month: 'long'});
 
-    console.log(data.currency, data.sum)
-
     return (
         <div className="flex flex-col gap-6 mt-8">
             <div className="flex justify-between w-full">
                 <h2 className="text-3xl uppercase">{data.title}</h2>
-                <h3 className="text-3xl text-brand-500">{data.currency} {data.sum}</h3>
+                <h3 className="text-3xl text-brand-500">{data.sum} {data.currency} </h3>
             </div>
             <div className="flex justify-between w-full">
 

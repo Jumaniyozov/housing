@@ -8,27 +8,27 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {Plan} from "@/types/Plans";
+import {cities} from "@/lib/cities";
 
-export const PlanSelect = ({handleChange, data}: {
-    handleChange: (id: string, val: string | number | boolean) => void,
-    data: Plan[]
+export const CitySelect = ({handleChange}: {
+    handleChange: (id: string, val: string | number | boolean) => void
 }) => {
 
     const onChange = (val: string) => {
-        handleChange("plan_id", val)
+        handleChange("city", val)
     }
 
+
     return (
-        <Select onValueChange={onChange}>
+        <Select onValueChange={onChange} required>
             <SelectTrigger className="w-full">
-                <SelectValue placeholder="Plan"/>
+                <SelectValue placeholder="Shahar"/>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Plan</SelectLabel>
-                    {data.map((el) => (
-                        <SelectItem key={el.id} value={el.id.toString()}>{el.name}</SelectItem>
+                    <SelectLabel>Shahar</SelectLabel>
+                    {cities.map((el) => (
+                        <SelectItem key={el} value={el}>{el}</SelectItem>
                     ))}
                 </SelectGroup>
             </SelectContent>

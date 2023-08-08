@@ -1,6 +1,7 @@
 import './globals.css'
 import {Antonio, PT_Sans_Narrow} from 'next/font/google'
 import AuthProvider from "@/components/providers/AuthProvider";
+import Providers from "@/app/providers";
 
 const antonio = Antonio({subsets: ['latin'], variable: '--font-antonio'})
 const sansNarrow = PT_Sans_Narrow({
@@ -24,9 +25,11 @@ export default function RootLayout({
         <html lang="en" className={`${antonio.variable} ${sansNarrow.variable}`}>
         {/*<body className={`${antonio.className} bg-cyan-50/40`}>{children}</body>*/}
         <body>
-        <AuthProvider>
-            {children}
-        </AuthProvider>
+        <Providers>
+            <AuthProvider>
+                {children}
+            </AuthProvider>
+        </Providers>
         </body>
         </html>
     )

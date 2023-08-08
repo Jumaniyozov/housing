@@ -1,0 +1,16 @@
+export const cities = [
+    "Toshkent Shahri",
+    "Toshkent Viloyati",
+    "Andijon",
+    "Farg`ona",
+    "Namangan",
+    "Sirdaryo",
+    "Samarqand",
+    "Qashqadaryo",
+    "Surxondaryo",
+    "Buxoro",
+    "Navoiy",
+    "Qoraqalpog`iston Respublikasi",
+    "Xorazm",
+    "Jizzax",
+]

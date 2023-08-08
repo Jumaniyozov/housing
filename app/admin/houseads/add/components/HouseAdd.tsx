@@ -1,69 +1,74 @@
 "use client"
 
 import {Label} from "@/components/ui/label";
-// import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useRef, useState} from "react";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {PriceSelect} from "@/app/admin/houseads/add/components/PriceSelect";
 import {Textarea} from "@/components/ui/textarea";
 import {Switch} from "@/components/ui/switch";
 import {useSession} from "next-auth/react";
-// import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
 import {PlanSelect} from "@/app/admin/houseads/add/components/PlanSelect";
 import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
 import {MapToAdd} from "@/app/admin/houseads/add/components/MapToAdd";
 import FormData from "form-data";
 import axios from "axios";
+import {Plan} from "@/types/Plans";
+import {Category} from "@/types/Categories";
+import {useQuery} from "@tanstack/react-query";
+import {fetchCategories, fetchPlans} from "@/app/admin/houseads/add/page";
+import {CitySelect} from "@/app/admin/houseads/add/components/CitySelect";
+import {DistrictSelect} from "@/app/admin/houseads/add/components/DistrictSelect";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads/upload`
 
-export const HouseAdd = () => {
+export const HouseAdd = ({
+                             plans, categories
+                         }: {
+    plans: Plan[], categories: Category[]
+}) => {
+    const {data: plansData} = useQuery({
+        queryKey: ['posts'],
+        queryFn: fetchPlans,
+        initialData: plans,
+    })
+
+    const {data: categoriesData} = useQuery({
+        queryKey: ['categories'],
+        queryFn: fetchCategories,
+        initialData: categories,
+    })
+
     const {data: session, status} = useSession();
-    // const images = useRef<HTMLInputElement>(null);
-
     const [fileList, setFileList] = useState<FileList | null>(null);
-
-    // @ts-ignore
     const files = fileList ? [...fileList] : [];
+    const formRef = useRef<HTMLFormElement>(null);
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFileList(e.target.files);
     };
 
-    const handleUploadClick = () => {
-
-
-        // 👇 Uploading the files using the fetch API to the server
-        // fetch('https://httpbin.org/post', {
-        //     method: 'POST',
-        //     // @ts-ignore
-        //     body: data,
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => console.log(data))
-        //     .catch((err) => console.error(err));
-    };
-
     const [values, setValues] = useState({
-        category: "",
+        category: undefined,
         is_rent: false,
-        title: "",
-        sum: 0,
-        currency: "",
+        title: undefined,
+        city: undefined,
+        district: undefined,
+        sum: undefined,
+        currency: undefined,
         images: [],
-        description: "",
-        room_quantity: 0,
-        total_area: 0,
-        living_area: 0,
-        floor: 1,
-        lat: 0.0,
-        long: 0.0,
-        phone_number: "",
-        telegram_url: "",
+        description: undefined,
+        room_quantity: undefined,
+        total_area: undefined,
+        living_area: undefined,
+        floor: undefined,
+        lat: undefined,
+        long: undefined,
+        phone_number: undefined,
+        telegram_url: undefined,
         auto_prolong: false,
         user_id: session?.user.id,
-        plan_id: "",
+        plan_id: undefined,
     })
 
     const handleChange = (id: string, val: string | number | boolean) => {
@@ -75,17 +80,11 @@ export const HouseAdd = () => {
 
 
     const handleSubmit = () => {
-        // const formData = new FormData();
-
         if (!fileList) {
             return;
         }
 
-        // 👇 Create new FormData object and append files
         const formData = new FormData();
-        // files.forEach((file, i) => {
-        //     formData.append(`files`, file);
-        // });
 
         Array.from(files).forEach(file => {
             if (file.name !== "" && file.name !== undefined && file.name !== null) {
@@ -93,12 +92,10 @@ export const HouseAdd = () => {
             }
         });
 
-        // formData.append(`files`, files);
-
-        // console.log(formData.get("files"));
-
         formData.append("category", values.category)
         formData.append("title", values.title)
+        formData.append("city", values.city)
+        formData.append("district", values.district)
         formData.append("sum", values.sum)
         formData.append("currency", values.currency)
         formData.append("description", values.description)
@@ -118,30 +115,31 @@ export const HouseAdd = () => {
             headers: {'content-type': 'multipart/form-data', "Authorization": `Bearer ${session?.user.access_token}`},
         }
 
-        console.log(values, files);
-
         axios.post(baseURL, formData, config)
             .then(response => {
-                console.log(response);
+                formRef.current?.reset();
+
                 setValues({
-                    category: "",
+                    category: undefined,
                     is_rent: false,
-                    title: "",
-                    sum: 0,
-                    currency: "",
+                    title: undefined,
+                    city: undefined,
+                    district: undefined,
+                    sum: undefined,
+                    currency: undefined,
                     images: [],
-                    description: "",
-                    room_quantity: 0,
-                    total_area: 0,
-                    living_area: 0,
-                    floor: 1,
-                    lat: 0.0,
-                    long: 0.0,
-                    phone_number: "",
-                    telegram_url: "",
+                    description: undefined,
+                    room_quantity: undefined,
+                    total_area: undefined,
+                    living_area: undefined,
+                    floor: undefined,
+                    lat: undefined,
+                    long: undefined,
+                    phone_number: undefined,
+                    telegram_url: undefined,
                     auto_prolong: false,
                     user_id: session?.user.id,
-                    plan_id: "",
+                    plan_id: undefined,
                 })
             })
             .catch(error => {
@@ -152,14 +150,14 @@ export const HouseAdd = () => {
 
     return (
         <>
-            <div className="grid w-full max-w-md items-center gap-1.5">
+            <form ref={formRef} className="grid w-full max-w-md items-center gap-1.5">
                 {/*<Label htmlFor="price">Turi</Label>*/}
                 <div className="flex gap-3">
                     <Label htmlFor="category" className="w-4/12">
                         Kategoriya
                     </Label>
                     <div className="w-8/12">
-                        <CategorySelect handleChange={handleChange}/>
+                        <CategorySelect data={categoriesData} handleChange={handleChange}/>
                     </div>
                 </div>
                 <div className="flex gap-3">
@@ -167,7 +165,23 @@ export const HouseAdd = () => {
                         Plan
                     </Label>
                     <div className="w-8/12">
-                        <PlanSelect handleChange={handleChange}/>
+                        <PlanSelect data={plansData} handleChange={handleChange}/>
+                    </div>
+                </div>
+                <div className="flex gap-3">
+                    <Label htmlFor="title" className="w-4/12">
+                        Plan
+                    </Label>
+                    <div className="w-8/12">
+                        <CitySelect handleChange={handleChange}/>
+                    </div>
+                </div>
+                <div className="flex gap-3">
+                    <Label htmlFor="title" className="w-4/12">
+                        Plan
+                    </Label>
+                    <div className="w-8/12">
+                        <DistrictSelect city={values.city} handleChange={handleChange}/>
                     </div>
                 </div>
                 <div className="flex gap-3 justify-between items-center w-full">
@@ -175,7 +189,7 @@ export const HouseAdd = () => {
                         Nomi
                     </Label>
                     <Input id="title" className="w-8/12"
-                           value={values.title}
+                           // value={values.title}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -184,7 +198,7 @@ export const HouseAdd = () => {
                         Narxi
                     </Label>
                     <Input id="sum" className="w-8/12" type="number"
-                           value={values.sum}
+                           // value={values.sum}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -201,7 +215,7 @@ export const HouseAdd = () => {
                         Tasnifi
                     </Label>
                     <Textarea id="description" className="w-8/12 rounded-none" maxLength={1000}
-                              value={values.description}
+                              // value={values.description}
                               onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                               required/>
                 </div>
@@ -210,7 +224,7 @@ export const HouseAdd = () => {
                         Xonalar soni
                     </Label>
                     <Input id="room_quantity" className="w-8/12" type="number"
-                           value={values.room_quantity}
+                           // value={values.room_quantity}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -219,7 +233,7 @@ export const HouseAdd = () => {
                         Umumiy maydoni
                     </Label>
                     <Input id="total_area" className="w-8/12" type="number"
-                           value={values.total_area}
+                           // value={values.total_area}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -228,7 +242,7 @@ export const HouseAdd = () => {
                         Yashash maydoni
                     </Label>
                     <Input id="living_area" className="w-8/12" type="number"
-                           value={values.living_area}
+                           // value={values.living_area}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -237,7 +251,7 @@ export const HouseAdd = () => {
                         Qavat soni
                     </Label>
                     <Input id="floor" className="w-8/12" type="number"
-                           value={values.floor}
+                           // value={values.floor}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -246,7 +260,7 @@ export const HouseAdd = () => {
                         Telefon raqami
                     </Label>
                     <Input id="phone_number" className="w-8/12" type="number" maxLength={12} minLength={12}
-                           value={values.phone_number}
+                           // value={values.phone_number}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -255,7 +269,7 @@ export const HouseAdd = () => {
                         Telegram manzili
                     </Label>
                     <Input id="telegram_url" className="w-8/12" type="text"
-                           value={values.telegram_url}
+                           // value={values.telegram_url}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -287,7 +301,7 @@ export const HouseAdd = () => {
                         Saqlash
                     </Button>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

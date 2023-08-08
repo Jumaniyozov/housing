@@ -1,0 +1,23 @@
+export interface Ads {
+    id: number,
+    category: number,
+    title: string,
+    sum: number,
+    currency: string,
+    images: string[],
+    description: string,
+    room_quantity: number,
+    total_area: number,
+    living_area: number,
+    floor: number,
+    lat: number,
+    long: number,
+    phone_number: string,
+    telegram_url: string,
+    auto_prolong: boolean,
+    is_active: boolean,
+    created_at: string,
+    updated_at: string,
+    user_id: number,
+    plan_id: number
+}

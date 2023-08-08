@@ -1,12 +1,11 @@
 import React from 'react';
 import Image from "next/image";
 
-const apiURL = `${process.env.NEXT_PUBLIC_SELF_URL}/api/static`;
+const apiURL = `${process.env.NEXT_PUBLIC_API_URL}/api/static`;
 
 const ImageSection = ({data}: {
     data: string[]
 }) => {
-
 
     return (
         <> {
