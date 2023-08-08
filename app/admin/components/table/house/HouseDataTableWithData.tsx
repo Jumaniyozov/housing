@@ -4,7 +4,6 @@ import {getServerSession} from "next-auth";
 import {options} from "@/app/api/auth/[...nextauth]/options";
 import {Ads} from "@/types/Ads";
 
-// const data: HouseDataType[] = generateFakeHouseColumnData(1000);
 
 async function fetchAds(): Promise<Ads[]> {
     const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads?page=1&per_page=1000`
@@ -29,7 +28,7 @@ export async function HouseDataTableWithData() {
 
     const dataWithToken = data.map((el) => ({
         ...el,
-        token: session?.user.access_token
+        token: session!.user.access_token
     }))
 
     dataWithToken.sort((a, b) => {
@@ -45,7 +44,7 @@ export async function HouseDataTableWithData() {
 
     return (
         <div className="bg-white rounded-md px-4 py-2">
-            {/*@ts-ignore*/}
+
             <HouseDataTable columns={columns} data={dataWithToken}/>
         </div>
     )

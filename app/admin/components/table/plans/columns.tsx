@@ -11,21 +11,10 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import {Plan} from "@/types/Plans";
 
-export type UserDataType = {
-    id: string,
-    // name: string,
-    // balance: number,
-    // userType: string,
-    // plan: string,
-    // isActive: boolean
-    name: string;
-    price: number;
-    duration: number;
-    // updated_at: string;
-}
 
-export const columns: ColumnDef<UserDataType>[] = [
+export const columns: ColumnDef<Plan>[] = [
     {
         accessorKey: "id",
         header: ({column}) => {

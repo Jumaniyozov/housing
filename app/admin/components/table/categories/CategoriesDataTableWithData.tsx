@@ -1,16 +1,18 @@
 import {columns} from "@/app/admin/components/table/categories/columns";
 
-import {getServerSession} from "next-auth";
-import {options} from "@/app/api/auth/[...nextauth]/options";
 import {CategoriesDataTable} from "@/app/admin/components/table/categories/data-table";
+import {Category} from "@/types/Categories";
 
-async function fetchCategories() {
+async function fetchCategories(): Promise<Category[]> {
     const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/categories?page=1&per_page=100`
 
     const res = await fetch(baseURL);
     const data = await res.json();
     const categories = data.result.data;
-    return categories;
+    if (categories && categories.length > 0) {
+        return categories;
+    }
+    return [];
 }
 
 export async function CategoriesDataTableWithData() {

@@ -3,8 +3,9 @@ import {columns} from "@/app/admin/components/table/plans/columns";
 import {getServerSession} from "next-auth";
 import {options} from "@/app/api/auth/[...nextauth]/options";
 import {PlansDataTable} from "@/app/admin/components/table/plans/data-table";
+import {Plan} from "@/types/Plans";
 
-async function fetchPlans() {
+async function fetchPlans(): Promise<Plan[]> {
     const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/plans?page=1&per_page=100`
     const session = await getServerSession(options);
 

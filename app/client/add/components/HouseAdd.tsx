@@ -16,9 +16,10 @@ import axios from "axios";
 import {Plan} from "@/types/Plans";
 import {Category} from "@/types/Categories";
 import {useQuery} from "@tanstack/react-query";
-import {fetchCategories, fetchPlans} from "@/app/client/add/page";
+import {fetchCategories, fetchPlans} from "@/app/client/add/utils/fetcher";
 import {CitySelect} from "@/app/client/add/components/CitySelect";
 import {DistrictSelect} from "@/app/client/add/components/DistrictSelect";
+import {useToast} from "@/components/ui/use-toast";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads/upload`
 
@@ -27,6 +28,8 @@ export const HouseAdd = ({
                          }: {
     plans: Plan[], categories: Category[]
 }) => {
+    const {toast} = useToast()
+
     const {data: plansData} = useQuery({
         queryKey: ['posts'],
         queryFn: fetchPlans,
@@ -118,7 +121,10 @@ export const HouseAdd = ({
         axios.post(baseURL, formData, config)
             .then(response => {
                 formRef.current?.reset();
-
+                toast({
+                    title: "E`lon",
+                    description: "E`lon muvaffaqiyatli yaratildi",
+                })
                 setValues({
                     category: undefined,
                     is_rent: false,
@@ -143,10 +149,13 @@ export const HouseAdd = ({
                 })
             })
             .catch(error => {
-                console.error(error);
+                toast({
+                    title: "E`lon",
+                    description: "E`lon yaratishda xato yuz berdi",
+                    variant: "destructive"
+                })
             });
     }
-
 
     return (
         <>

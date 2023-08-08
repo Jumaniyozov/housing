@@ -36,7 +36,7 @@ export async function HouseDataTableWithData() {
     const data = await fetchAds(session?.user.id);
     const dataWithToken = data.map((el) => ({
         ...el,
-        token: session?.user.access_token
+        token: session!.user.access_token
     }))
 
     dataWithToken.sort((a, b) => {
@@ -52,9 +52,7 @@ export async function HouseDataTableWithData() {
 
     return (
         <div className="bg-white rounded-md px-4 py-2">
-            {/*@ts-ignore*/}
             <HouseDataTable columns={columns} data={dataWithToken}/>
-
         </div>
     )
 

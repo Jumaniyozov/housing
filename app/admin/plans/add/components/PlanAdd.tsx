@@ -6,10 +6,12 @@ import {useSession} from "next-auth/react";
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
 import axios from "axios";
+import {useToast} from "@/components/ui/use-toast";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/plans`
 
 export const PlanAdd = () => {
+    const {toast} = useToast();
     const {data: session, status} = useSession();
     const [values, setValues] = useState({
         name: "",
@@ -38,6 +40,11 @@ export const PlanAdd = () => {
         });
 
         if (res.status === 200 || res.status === 201) {
+            toast({
+                title: "Plan",
+                description: "Plan muvaffaqiyatli yaratildi."
+            })
+
             setValues({
                 name: "",
                 price: 0,

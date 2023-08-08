@@ -25,8 +25,6 @@ const Sidebar = () => {
 
     const pathname = usePathname();
 
-    console.log(session?.user);
-
 
     return (
         <div className="min-h-screen h-auto bg-brandDark-900 w-2/12 flex">

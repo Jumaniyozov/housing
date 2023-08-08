@@ -167,11 +167,10 @@ export const columns: ColumnDef<Ads & { token: string }>[] = [
     {
         id: "actions",
         enableHiding: false,
-        cell: ({row}) => {
+        cell: ({row, table}) => {
             const ad = row.original;
 
             const handleActivate = async () => {
-                console.log(ad.id, ad.token)
                 await fetch(`${baseURL}/ads/activate`, {
                     method: "POST",
                     body: JSON.stringify({
@@ -186,7 +185,6 @@ export const columns: ColumnDef<Ads & { token: string }>[] = [
             }
 
             const handleDeactivate = async () => {
-                console.log(ad.id, ad.token)
                 await fetch(`${baseURL}/ads/activate`, {
                     method: "POST",
                     body: JSON.stringify({

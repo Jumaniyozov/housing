@@ -11,14 +11,10 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import {Category} from "@/types/Categories";
 
-export type CategoryDataType = {
-    id: string,
-    name: string;
-    is_rent: boolean;
-}
 
-export const columns: ColumnDef<CategoryDataType>[] = [
+export const columns: ColumnDef<Category>[] = [
     {
         accessorKey: "id",
         header: ({column}) => {

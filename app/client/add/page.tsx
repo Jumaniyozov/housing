@@ -1,21 +1,5 @@
 import {HouseAdd} from "@/app/client/add/components/HouseAdd";
-
-
-export async function fetchCategories() {
-    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/categories?page=1&per_page=1000`
-    const res = await fetch(baseURL);
-    const data = await res.json();
-    const categories = data.result.data;
-    return categories;
-}
-
-export async function fetchPlans() {
-    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/plans?page=1&per_page=1000`
-    const res = await fetch(baseURL);
-    const data = await res.json();
-    const plans = data.result.data;
-    return plans;
-}
+import {fetchCategories, fetchPlans} from "@/app/client/add/utils/fetcher";
 
 
 export default async function AddHouseAd() {

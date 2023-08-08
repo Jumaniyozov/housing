@@ -7,10 +7,13 @@ import {Button} from "@/components/ui/button";
 import {useSession} from "next-auth/react";
 import {useState} from "react";
 import axios from "axios";
+import {useToast} from "@/components/ui/use-toast";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/categories`
 
 export const CategoryAdd = () => {
+    const {toast} = useToast();
+
     const {data: session, status} = useSession();
     const [values, setValues] = useState({
         name: "",
@@ -38,6 +41,11 @@ export const CategoryAdd = () => {
         });
 
         if (res.status === 200 || res.status === 201) {
+            toast({
+                title: "Kategoriya",
+                description: "Kategoriya muvaffaqiyatli yaratildi."
+            })
+
             setValues({
                 name: "",
                 is_rent: false

@@ -2,6 +2,7 @@ import './globals.css'
 import {Antonio, PT_Sans_Narrow} from 'next/font/google'
 import AuthProvider from "@/components/providers/AuthProvider";
 import Providers from "@/app/providers";
+import {Toaster} from "@/components/ui/toaster";
 
 const antonio = Antonio({subsets: ['latin'], variable: '--font-antonio'})
 const sansNarrow = PT_Sans_Narrow({
@@ -30,6 +31,7 @@ export default function RootLayout({
                 {children}
             </AuthProvider>
         </Providers>
+        <Toaster/>
         </body>
         </html>
     )

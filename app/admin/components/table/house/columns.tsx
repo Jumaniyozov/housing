@@ -15,6 +15,8 @@ import {Ads} from "@/types/Ads";
 
 const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
+
+
 export const columns: ColumnDef<Ads & { token: string }>[] = [
     {
         accessorKey: "id",
@@ -158,7 +160,6 @@ export const columns: ColumnDef<Ads & { token: string }>[] = [
             const ad = row.original;
 
             const handleActivate = async () => {
-                console.log(ad.id, ad.token)
                 await fetch(`${baseURL}/ads/activate`, {
                     method: "POST",
                     body: JSON.stringify({
@@ -173,7 +174,6 @@ export const columns: ColumnDef<Ads & { token: string }>[] = [
             }
 
             const handleDeactivate = async () => {
-                console.log(ad.id, ad.token)
                 await fetch(`${baseURL}/ads/activate`, {
                     method: "POST",
                     body: JSON.stringify({

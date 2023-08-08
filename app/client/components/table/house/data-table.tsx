@@ -53,7 +53,7 @@ export function HouseDataTable<TData, TValue>({
             sorting,
             columnFilters,
             columnVisibility,
-            rowSelection
+            rowSelection,
         },
     })
 

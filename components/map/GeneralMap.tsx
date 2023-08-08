@@ -5,7 +5,7 @@ import {IMapState} from "yandex-maps";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {useSession} from "next-auth/react";
-import {Ads} from "@/components/store/ads";
+import {Ads} from "@/types/Ads";
 
 const defaultState: IMapState = {
     center: [41.319592, 69.254302],
