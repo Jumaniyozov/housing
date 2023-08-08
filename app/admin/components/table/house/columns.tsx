@@ -8,31 +8,21 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel, DropdownMenuSeparator,
+    DropdownMenuLabel,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import {Ads} from "@/types/Ads";
 
-export type HouseDataType = {
-    ID: string;
-    category: string;
-    title: string;
-    sum: string;
-    currency: string;
-    room_quantity: string;
-    auto_prolong: boolean;
-    is_active: boolean;
-    created_at: string;
-    user_id: string;
-}
+const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
-export const columns: ColumnDef<HouseDataType>[] = [
+export const columns: ColumnDef<Ads & { token: string }>[] = [
     {
         accessorKey: "id",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "desc")}
                 >
                     ID
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
@@ -165,7 +155,38 @@ export const columns: ColumnDef<HouseDataType>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({row}) => {
-            const payment = row.original
+            const ad = row.original;
+
+            const handleActivate = async () => {
+                console.log(ad.id, ad.token)
+                await fetch(`${baseURL}/ads/activate`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        is_active: true,
+                        id: ad.id
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${ad.token}`
+                    }
+                }).catch(err => console.error(err));
+            }
+
+            const handleDeactivate = async () => {
+                console.log(ad.id, ad.token)
+                await fetch(`${baseURL}/ads/activate`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        is_active: false,
+                        id: ad.id
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${ad.token}`
+                    }
+                }).catch(err => console.error(err));
+            }
+
 
             return (
                 <DropdownMenu>
@@ -177,14 +198,10 @@ export const columns: ColumnDef<HouseDataType>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="font-sansNarrow">
                         <DropdownMenuLabel>Sozlamalar</DropdownMenuLabel>
-                        {/*<DropdownMenuItem*/}
-                        {/*    onClick={() => navigator.clipboard.writeText(payment.id)}*/}
-                        {/*>*/}
-                        {/*    Copy payment ID*/}
-                        {/*</DropdownMenuItem>*/}
-                        {/*<DropdownMenuSeparator/>*/}
+
                         <DropdownMenuItem>Sozlash</DropdownMenuItem>
-                        <DropdownMenuItem>O`chirish</DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleActivate}>Aktiv qilish</DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleDeactivate}>O`chirish</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

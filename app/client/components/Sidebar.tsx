@@ -12,11 +12,11 @@ const links = [
         title: "E`lonlar",
         isActive: true,
     },
-    {
-        pathname: "/client/balance",
-        title: "Balans",
-        isActive: false,
-    }
+    // {
+    //     pathname: "/client/balance",
+    //     title: "Balans",
+    //     isActive: false,
+    // }
 ]
 
 

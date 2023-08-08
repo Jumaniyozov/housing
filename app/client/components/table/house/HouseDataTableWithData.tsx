@@ -17,7 +17,8 @@ async function fetchAds(id: string | undefined): Promise<Ads[]> {
             headers: {
                 "Authorization": `Bearer ${session?.user.access_token}`,
                 "Content-Type": "application/json"
-            }
+            },
+            cache: "no-cache"
         });
         const data = await res.json();
         if (data.result) {
@@ -33,12 +34,27 @@ export async function HouseDataTableWithData() {
     const session = await getServerSession(options);
 
     const data = await fetchAds(session?.user.id);
+    const dataWithToken = data.map((el) => ({
+        ...el,
+        token: session?.user.access_token
+    }))
+
+    dataWithToken.sort((a, b) => {
+        if (a.id < b.id) {
+            return -1;
+        }
+        if (a.id > b.id) {
+            return 1;
+        }
+
+        return 0;
+    })
 
     return (
         <div className="bg-white rounded-md px-4 py-2">
-            {
-                <HouseDataTable columns={columns} data={data}/>
-            }
+            {/*@ts-ignore*/}
+            <HouseDataTable columns={columns} data={dataWithToken}/>
+
         </div>
     )
 

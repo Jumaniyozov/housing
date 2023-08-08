@@ -17,7 +17,6 @@ import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {useState} from "react";
-import {FilterArea} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
 import {PlusIcon} from "lucide-react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
@@ -38,7 +37,6 @@ export function HouseDataTable<TData, TValue>({
     const [rowSelection, setRowSelection] = useState({})
     const pathname = usePathname();
 
-
     const table = useReactTable({
         data,
         columns,
@@ -56,6 +54,7 @@ export function HouseDataTable<TData, TValue>({
             columnVisibility,
             rowSelection
         },
+
     })
 
     // useEffect(() => {

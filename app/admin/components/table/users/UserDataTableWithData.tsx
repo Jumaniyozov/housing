@@ -1,5 +1,4 @@
-
-import {columns, UserDataType} from "@/app/admin/components/table/users/columns";
+import {columns} from "@/app/admin/components/table/users/columns";
 import {UserDataTable} from "@/app/admin/components/table/users/data-table";
 
 import {getServerSession} from "next-auth";
@@ -13,7 +12,8 @@ async function fetchUsers() {
     const res = await fetch(baseURL, {
         headers: {
             "Authorization": `Bearer ${session?.user.access_token}`
-        }
+        },
+        cache: "no-cache"
     });
     const data = await res.json();
     const users = data.result.data;
