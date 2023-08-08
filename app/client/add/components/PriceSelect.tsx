@@ -10,19 +10,27 @@ import {
 } from "@/components/ui/select";
 
 const vals = [
-    {name: "Sotiladigan uy", id: "house"},
-    {name: "Arenda", id: "rent"},
+    {name: "so`m"},
+    {name: "y.e."},
 ]
 
-export const CategorySelect = () => {
+export const PriceSelect = ({handleChange}: {
+    handleChange: (id: string, val: string | number | boolean) => void
+}) => {
+
+    const onChange = (val: string) => {
+        handleChange("currency", val)
+    }
+
+
     return (
-        <Select>
+        <Select onValueChange={onChange}>
             <SelectTrigger className="w-full">
-                <SelectValue placeholder="Kategoriyani tanlang"/>
+                <SelectValue placeholder="Valyuta"/>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Turi</SelectLabel>
+                    <SelectLabel>Valyuta</SelectLabel>
                     {vals.map((el) => (
                         <SelectItem key={el.name} value={el.name}>{el.name}</SelectItem>
                     ))}

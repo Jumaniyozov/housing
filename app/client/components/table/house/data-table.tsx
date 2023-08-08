@@ -17,7 +17,6 @@ import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {useState} from "react";
-import {FilterArea} from "@/app/admin/components/table/users/utilComponents/FilterSelectors";
 import {PlusIcon} from "lucide-react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
@@ -74,14 +73,14 @@ export function HouseDataTable<TData, TValue>({
                     }
                     className="w-5/12"
                 />
-                <div className="w-5/12">
-                    <FilterArea
-                        value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}
-                        onChange={(val) =>
-                            table.getColumn("area")?.setFilterValue(val)
-                        }
-                    />
-                </div>
+                {/*<div className="w-5/12">*/}
+                {/*    <FilterArea*/}
+                {/*        value={(table.getColumn("area")?.getFilterValue() as string) ?? undefined}*/}
+                {/*        onChange={(val) =>*/}
+                {/*            table.getColumn("area")?.setFilterValue(val)*/}
+                {/*        }*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <Link href={`${pathname}/add`}
                       className="bg-brand-500 hover:bg-brand-600 w-2/12 flex items-center text-white p-2">
                     E`lon qo`shish <PlusIcon className="w-5 h-5"/>

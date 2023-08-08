@@ -29,9 +29,16 @@ const Navbar = async (props: NavbarProps) => {
                     <div className="flex justify-end w-1/2 gap-4">
                         {session ? (
                                 <>
-                                    <Link href={"/admin"} className="bg-brand-500 hover:bg-brand-600">
-                                        <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Admin Panel</Button>
-                                    </Link>
+                                    {session.user.role === "0001" ?
+
+                                        <Link href={"/admin"} className="bg-brand-500 hover:bg-brand-600">
+                                            <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Admin Panel</Button>
+                                        </Link>
+                                        :
+                                        <Link href={"/client"} className="bg-brand-500 hover:bg-brand-600">
+                                            <Button className="bg-brand-500 hover:bg-brand-600" size="lg">Dashbord</Button>
+                                        </Link>
+                                    }
                                     <LogoutButton/>
                                 </>
                             )

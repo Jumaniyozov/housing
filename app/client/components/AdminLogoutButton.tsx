@@ -11,6 +11,6 @@ export default function AdminLogoutButton() {
     }
 
     return <div className="flex h-[10%] justify-center w-full">
-        <Button onClick={handleLogout} className="bg-brand-500 hover:bg-brand-600">Chiqish</Button>
+        <Button onClick={handleLogout} className="bg-brand-500 hover:bg-brand-600">Qaytish</Button>
     </div>;
 }

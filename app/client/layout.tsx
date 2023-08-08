@@ -1,4 +1,4 @@
-import Sidebar from "@/app/admin/components/Sidebar";
+import Sidebar from "@/app/client/components/Sidebar";
 
 export const metadata = {
     title: 'Admin sahifasi',

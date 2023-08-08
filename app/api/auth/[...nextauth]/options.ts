@@ -27,7 +27,6 @@ export const options: NextAuthOptions = {
                 });
 
 
-
                 const user = await res.json();
 
                 if (res.ok && user) {
@@ -50,6 +49,7 @@ export const options: NextAuthOptions = {
                 token.access_token = user.access_token;
                 token.role = user.role;
                 token.user_id = user.user_id;
+                token.balance = user.balance;
             }
             return token;
         },
@@ -60,6 +60,7 @@ export const options: NextAuthOptions = {
                 session.user.access_token = token.access_token;
                 session.user.id = token.user_id;
                 session.user.role = token.role;
+                session.user.balance = token.balance;
             }
             return session;
         },

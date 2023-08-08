@@ -4,23 +4,23 @@ import {Label} from "@/components/ui/label";
 import React, {ChangeEvent, useRef, useState} from "react";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
-import {PriceSelect} from "@/app/admin/houseads/add/components/PriceSelect";
+import {PriceSelect} from "@/app/client/add/components/PriceSelect";
 import {Textarea} from "@/components/ui/textarea";
 import {Switch} from "@/components/ui/switch";
 import {useSession} from "next-auth/react";
-import {PlanSelect} from "@/app/admin/houseads/add/components/PlanSelect";
-import {CategorySelect} from "@/app/admin/houseads/add/components/CategorySelect";
-import {MapToAdd} from "@/app/admin/houseads/add/components/MapToAdd";
+import {PlanSelect} from "@/app/client/add/components/PlanSelect";
+import {CategorySelect} from "@/app/client/add/components/CategorySelect";
+import {MapToAdd} from "@/app/client/add/components/MapToAdd";
 import FormData from "form-data";
 import axios from "axios";
 import {Plan} from "@/types/Plans";
 import {Category} from "@/types/Categories";
 import {useQuery} from "@tanstack/react-query";
-import {fetchCategories, fetchPlans} from "@/app/admin/houseads/add/page";
-import {CitySelect} from "@/app/admin/houseads/add/components/CitySelect";
-import {DistrictSelect} from "@/app/admin/houseads/add/components/DistrictSelect";
+import {fetchCategories, fetchPlans} from "@/app/client/add/page";
+import {CitySelect} from "@/app/client/add/components/CitySelect";
+import {DistrictSelect} from "@/app/client/add/components/DistrictSelect";
 
-const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads/uploadadmin`
+const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/ads/upload`
 
 export const HouseAdd = ({
                              plans, categories
@@ -189,7 +189,7 @@ export const HouseAdd = ({
                         Nomi
                     </Label>
                     <Input id="title" className="w-8/12"
-                           // value={values.title}
+                        // value={values.title}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -198,7 +198,7 @@ export const HouseAdd = ({
                         Narxi
                     </Label>
                     <Input id="sum" className="w-8/12" type="number"
-                           // value={values.sum}
+                        // value={values.sum}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -215,7 +215,7 @@ export const HouseAdd = ({
                         Tasnifi
                     </Label>
                     <Textarea id="description" className="w-8/12 rounded-none" maxLength={1000}
-                              // value={values.description}
+                        // value={values.description}
                               onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                               required/>
                 </div>
@@ -224,7 +224,7 @@ export const HouseAdd = ({
                         Xonalar soni
                     </Label>
                     <Input id="room_quantity" className="w-8/12" type="number"
-                           // value={values.room_quantity}
+                        // value={values.room_quantity}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -233,7 +233,7 @@ export const HouseAdd = ({
                         Umumiy maydoni
                     </Label>
                     <Input id="total_area" className="w-8/12" type="number"
-                           // value={values.total_area}
+                        // value={values.total_area}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -242,7 +242,7 @@ export const HouseAdd = ({
                         Yashash maydoni
                     </Label>
                     <Input id="living_area" className="w-8/12" type="number"
-                           // value={values.living_area}
+                        // value={values.living_area}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -251,7 +251,7 @@ export const HouseAdd = ({
                         Qavat soni
                     </Label>
                     <Input id="floor" className="w-8/12" type="number"
-                           // value={values.floor}
+                        // value={values.floor}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -260,7 +260,7 @@ export const HouseAdd = ({
                         Telefon raqami
                     </Label>
                     <Input id="phone_number" className="w-8/12" type="number" maxLength={12} minLength={12}
-                           // value={values.phone_number}
+                        // value={values.phone_number}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>
@@ -269,7 +269,7 @@ export const HouseAdd = ({
                         Telegram manzili
                     </Label>
                     <Input id="telegram_url" className="w-8/12" type="text"
-                           // value={values.telegram_url}
+                        // value={values.telegram_url}
                            onChange={(e) => handleChange(e.currentTarget.id, e.currentTarget.value)}
                            required/>
                 </div>

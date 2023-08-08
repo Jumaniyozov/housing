@@ -11,31 +11,22 @@ import {
     DropdownMenuLabel, DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import {Ads} from "@/types/Ads";
 
-export type HouseDataType = {
-    no: number,
-    id: string,
-    adress: string,
-    area: string,
-    areaSquare: number
-}
+// export type HouseDataType = {
+//     ID: string;
+//     category: string;
+//     title: string;
+//     sum: string;
+//     currency: string;
+//     room_quantity: string;
+//     auto_prolong: boolean;
+//     is_active: boolean;
+//     created_at: string;
+//     user_id: string;
+// }
 
-export const columns: ColumnDef<HouseDataType>[] = [
-    {
-        accessorKey: "no",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    №
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-            )
-        },
-        cell: ({row}) => <div>{row.getValue("no")}</div>,
-    },
+export const columns: ColumnDef<Ads>[] = [
     {
         accessorKey: "id",
         header: ({column}) => {
@@ -52,49 +43,124 @@ export const columns: ColumnDef<HouseDataType>[] = [
         cell: ({row}) => <div>{row.getValue("id")}</div>,
     },
     {
-        accessorKey: "adress",
+        accessorKey: "category",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Adress
+                    Kategoriya
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("adress")}</div>,
+        cell: ({row}) => <div>{row.getValue("category")}</div>,
     },
     {
-        accessorKey: "area",
+        accessorKey: "title",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Hududi
+                    Nomi
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("area")}</div>,
+        cell: ({row}) => <div>{row.getValue("title")}</div>,
     },
     {
-        accessorKey: "areaSquare",
+        accessorKey: "sum",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Maydon
+                    Summa
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
-        cell: ({row}) => <div>{row.getValue("areaSquare") + "m.kv."}</div>,
+        cell: ({row}) => <div>{row.getValue("sum")}</div>,
+    },
+    {
+        accessorKey: "currency",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Valyuta
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
+        cell: ({row}) => <div>{row.getValue("currency")}</div>,
+    },
+    {
+        accessorKey: "room_quantity",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Xonalar soni
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
+        cell: ({row}) => <div>{row.getValue("room_quantity")}</div>,
+    },
+    {
+        accessorKey: "user_id",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Foydalanuvchi
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
+        cell: ({row}) => <div>{row.getValue("user_id")}</div>,
+    },
+    {
+        accessorKey: "is_active",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Aktivmi
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
+        cell: ({row}) => <div>{row.getValue("is_active") ? "Ha" : "Yo'q"}</div>,
+    },
+    {
+        accessorKey: "created_at",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Yaratilgan sana
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
+        cell: ({row}) => <div>{row.getValue("created_at")}</div>,
     },
     {
         id: "actions",
