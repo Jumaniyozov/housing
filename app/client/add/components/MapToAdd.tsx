@@ -27,7 +27,7 @@ export const MapToAdd = ({handleChange}: {
     return (
         <YMaps>
             <Map
-                className="h-full w-full"
+                className="h-full w-full flex-1"
                 defaultState={defaultState}
                 modules={["geolocation", "geocode"]}
                 onClick={addPlaceMark}

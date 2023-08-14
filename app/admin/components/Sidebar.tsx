@@ -4,14 +4,19 @@ import AdminLogoutButton from "@/app/admin/components/AdminLogoutButton";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {usePathname} from "next/navigation";
-import {useState} from "react";
 
 const links = [
+    {
+        pathname: "/admin/statistics",
+        title: "Statistika",
+        isActive: false,
+    },
     {
         pathname: "/admin",
         title: "Foydalanuvchilar ro`yxati",
         isActive: true,
-    }, {
+    },
+    {
         pathname: "/admin/houseads",
         title: "E`lonlar",
         isActive: false,
@@ -28,9 +33,15 @@ const links = [
     },
     {
         pathname: "/admin/plans",
-        title: "Tariflar/Planlar",
+        title: "Planlar",
         isActive: false,
     },
+
+    // {
+    //     pathname: "/admin/services",
+    //     title: "Xizmatlar",
+    //     isActive: false,
+    // },
 ]
 
 

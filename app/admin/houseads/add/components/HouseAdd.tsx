@@ -182,7 +182,7 @@ export const HouseAdd = ({
                 </div>
                 <div className="flex gap-3">
                     <Label htmlFor="title" className="w-4/12">
-                        Plan
+                        Shahar
                     </Label>
                     <div className="w-8/12">
                         <CitySelect handleChange={handleChange}/>
@@ -190,7 +190,7 @@ export const HouseAdd = ({
                 </div>
                 <div className="flex gap-3">
                     <Label htmlFor="title" className="w-4/12">
-                        Plan
+                        Tuman
                     </Label>
                     <div className="w-8/12">
                         <DistrictSelect city={values.city} handleChange={handleChange}/>

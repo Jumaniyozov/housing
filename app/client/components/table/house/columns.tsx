@@ -12,6 +12,7 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Ads} from "@/types/Ads";
+import Link from "next/link";
 
 // export type HouseDataType = {
 //     ID: string;
@@ -163,6 +164,11 @@ export const columns: ColumnDef<Ads & { token: string }>[] = [
             )
         },
         cell: ({row}) => <div>{row.getValue("created_at")}</div>,
+    },
+    {
+        accessorKey: "advertise",
+        enableHiding: false,
+        cell: ({row}) => <Link href="/client/advertise" className="bg-brand-500 p-2 text-white rounded-md">Reklama qilish</Link>,
     },
     {
         id: "actions",
